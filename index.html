@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>!ncredible India</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/fredoka" rel="stylesheet">
+    <link type="image" rel="icon" href="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/800px-Flag_of_India.svg.png?20111003033457">
+                
+  </head>
+  <section>
+    
+    
+
+    <nav class="navbar">
+      <div class="container">
+          <div class="logo">
+            <a href="index.html">
+              <h2>!NDIA</h2>
+            </a>
+          </div>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="heritage.html">Heritage</a></li>
+            <li><a href="travel.html">Travel</a></li>
+            <li><a href="index.html#Gallery">Gallery</a></li>
+          </ul>
+      </div>
+    </nav>
+
+    <div class="header">  
+      <div class="video-wrapper">
+        <video autoplay muted loop class="bg-video">
+          <source src="visual/v1.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+      </div>                       
+      <div class="header-info">
+        <h1>Incredible !ndia</h1>
+        <p>India is a country dotted with stunning wildlife diversity, and rich traditions. While the Western coast greets you with mouth-watering delicacies, the East part invites you to experience its greenery.</p>
+      </div>
+      
+      <div class="read-more">
+        <a href="https://indianculture.gov.in/" target="_blank"> Read More</a>
+      </div>
+    </div>
+
+    <div class="main">
+        <div class="hero">
+          <div class="card left" id="heritage">
+            <div class="card-overlay"></div>
+            <div class="card-content">
+              <h2>Heritage</h2>
+              <p class="summary">Hover to explore</p>
+              <p class="more-info">
+                India's rich heritage is a vibrant tapestry of ancient architecture, timeless traditions, and diverse cultural expressions. From majestic forts to classical art forms, it reflects the soul of a civilization that has flourished for thousands of years. 
+              </p>
+            </div>
+          </div>
+
+          <div class="card middle" id="festival">
+            <div class="card-overlay"></div>
+            <div class="card-content">
+              <h2>Indian Festivals</h2>
+              <p class="summary">Hover to explore</p>
+              <p class="more-info">
+                Celebrate the vibrant spirit of India through its festivals, where colors, lights, music, and traditions come together. From Diwali’s dazzling lamps to Holi’s joyful splashes of color, every festival tells a story of unity and cultural richness. These celebrations reflect the soul of India diverse, timeless, and full of life. 
+              </p>
+            </div>
+          </div>
+
+          <div class="card right" id="travel">
+              <div class="card-overlay"></div>
+              <div class="card-content">
+                <h2>Travel</h2>
+                <p class="summary">Hover to explore</p>
+                <p class="more-info">
+                  Discover the breathtaking beauty of India from the snow-capped Himalayas in the north to the serene backwaters of Kerala in the south. Every journey here is a vibrant tapestry of culture, nature, and timeless heritage. 
+                </p>
+              </div>
+            </div>
+           </div>
+    </div>
+    
+    <div class="info">
+      
+      <div class="slider-container">
+        <div class="image-section">
+          <button onclick="prevSlide()">←</button>
+          <img id="slider-image" src="slider/heritage/image1.avif" alt="Slide Image" />
+          <button onclick="nextSlide()">→</button>
+        </div>
+        <div class="info-section" id="slider-info">
+          <h2>Title 1</h2>
+          <p>Description for image 1.</p>
+        </div>
+      </div>
+
+      <script>
+        const slides = [
+          {
+            image: "slider/heritage/image1.avif",
+            title: "Taj Mahal",
+            description: "The Taj Mahal, in Agra, Uttar Pradesh, is a white marble mausoleum built by Shah Jahan in 1632 in memory of his wife Mumtaz Mahal. Known as a symbol of love, it blends Persian, Islamic, and Indian architecture and sits by the Yamuna River. It’s one of the most famous monuments in the world and a UNESCO World Heritage Site.It attracts millions of visitors each year."
+          },
+          {
+            image: "slider/heritage/image2.avif",
+            title: "Gateway Of India",
+            description: "The Gateway of India, situated in Mumbai, Maharashtra, was built in 1924 to commemorate the visit of King George V and Queen Mary to India in 1911. Made of yellow basalt stone, it blends Hindu and Muslim architectural styles. Overlooking the Arabian Sea, it is one of Mumbai’s most famous landmarks."
+          },
+          {
+            image: "slider/heritage/image3.avif",
+            title: "Hawa Mahal",
+            description: "The Hawa Mahal, located in Jaipur, Rajasthan, is a beautiful pink sandstone palace built in 1799 by Maharaja Sawai Pratap Singh. Also known as the Palace of Winds, it has 953 small windows designed to let royal women observe street festivals without being seen. It's a famous example of Rajput architecture and a major tourist attraction."
+          },
+          {
+            image: "slider/heritage/image4.avif",
+            title: "Lotus Temple",
+            description: "The Lotus Temple, located in New Delhi, is a Bahá'í House of Worship known for its flower-like shape. Completed in 1986, it is made of white marble and welcomes people of all religions. The temple symbolizes peace, unity, and purity, and is one of the most visited buildings in the world."
+          },
+          {
+            image: "slider/heritage/image5.avif",
+            title: "Stone Chariot",
+            description: "The Stone Chariot, located in Hampi, Karnataka, is a famous 16th-century granite monument in the Vittala Temple complex. Built during the reign of King Krishnadevaraya of the Vijayanagara Empire, it is known for its detailed carvings and resembles a real chariot. It's one of the most iconic symbols of Hampi and Indian heritage."
+          },
+          {
+            image: "slider/heritage/image6.avif",
+            title: "Jal Mahal",
+            description: "The Jal Mahal, meaning Water Palace, is located in the middle of Man Sagar Lake in Jaipur, Rajasthan. Built in the 18th century by Maharaja Madho Singh, it blends Rajput and Mughal architecture. Though it appears to float on water, most of the palace is submerged, making it a unique and scenic spot in Jaipur"
+          },
+          {
+            image: "slider/heritage/image7.avif",
+            title: "Humayun's Tomb",
+            description: "Humayun’s Tomb, located in Delhi, was built in 1570 by Empress Bega Begum for her husband, Emperor Humayun. It was the first garden tomb in India and inspired later Mughal architecture, including the Taj Mahal. Made of red sandstone and white marble, it's a UNESCO World Heritage Site and a masterpiece of Mughal design."
+          }
+        ];
+
+        
+    
+        let currentIndex = 0;
+    
+        function updateSlider() {
+          const img = document.getElementById("slider-image");
+          const info = document.getElementById("slider-info");
+    
+          img.src = slides[currentIndex].image;
+          img.alt = slides[currentIndex].title;
+          info.innerHTML = `
+            <h2>${slides[currentIndex].title}</h2>
+            <p>${slides[currentIndex].description}</p>
+          `;
+        }
+    
+        function prevSlide() {
+          currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+          updateSlider();
+        }
+    
+        function nextSlide() {
+          currentIndex = (currentIndex + 1) % slides.length;
+          updateSlider();
+        }
+
+        updateSlider();
+      </script>
+      
+      <div class="slider-container reverse">
+        <div class="info-section" id="slider-info-2">
+          <h2>Title A</h2>
+          <p>Description for image A.</p>
+        </div>
+        <div class="image-section">
+          <button onclick="prevSlide2()">←</button>
+          <img id="slider-image-2" src="slider/festival/image1.avif" alt="Slide Image" />
+          <button onclick="nextSlide2()">→</button>
+        </div>
+      </div>
+
+      <script>
+        const slides2 = [
+          {
+            image: "slider/festival/image1.avif",
+            title: "Holi",
+            description: "Holi, known as the Festival of Colors, is one of the most vibrant and joyful festivals in India, celebrated in March. It marks the victory of good over evil and the arrival of spring. People throw colored powders, dance, and enjoy festive sweets like gujiya. The festival begins with Holika Dahan, a bonfire symbolizing the burning of evil. Holi promotes love, unity, and the spirit of togetherness."
+          },
+          {
+            image: "slider/festival/image2.avif",
+            title: "Eid al-Adha (Bakri  Eid)",
+            description: "Bakri Eid, also known as Eid al-Adha, is a significant Islamic festival celebrated across India and the world. It commemorates the willingness of Prophet Ibrahim to sacrifice his son as an act of obedience to God. Celebrated about 70 days after Eid al-Fitr, the day begins with special prayers at mosques, followed by the sacrifice of animals like goats or sheep, symbolizing devotion and charity. The meat is shared with family, friends, and those in need."
+          },
+          {
+          
+            image: "slider/festival/image3.avif",
+            title: "Christmas",
+            description: "Christmas, celebrated on December 25, marks the birth of Jesus Christ and is one of the most cherished festivals among Christians in India and around the world. Churches are beautifully decorated, and midnight masses are held. People exchange gifts, enjoy festive meals, and decorate Christmas trees and homes with lights and stars. The festival spreads a message of love, peace, and joy."
+          },
+          {
+            image: "slider/festival/image4.avif",
+            title: "Diwali",
+            description: "Diwali, also known as the Festival of Lights, is one of the most celebrated festivals in India, usually observed in October or November. It symbolizes the victory of light over darkness and good over evil, commemorating Lord Rama’s return to Ayodhya after defeating Ravana. Homes are lit with diyas (oil lamps) and candles, fireworks light up the sky, and people exchange sweets and gifts. It’s a time for family gatherings, prayers, and joyful celebration."
+          },
+          {
+            image: "slider/festival/image5.avif",
+            title: "Buddha Purnima",
+            description: "Buddha Purnima, also known as Vesak, marks the birth, enlightenment, and death of Lord Buddha. Celebrated on the full moon day in April or May, it’s the most sacred day for Buddhists across India and the world. Devotees visit monasteries and temples, offer prayers, meditate, and engage in acts of kindness and charity. The day reflects Buddha’s teachings of peace, compassion, and wisdom."
+          },
+          {
+            image: "slider/festival/image6.avif",
+            title: "Ganesh Chaturthi",
+            description: "Ganesh Chaturthi is a vibrant Hindu festival celebrating the birth of Lord Ganesha, the god of wisdom and prosperity. It is especially grand in Maharashtra, where beautifully crafted Ganesha idols are worshipped in homes and public pandals. The festival lasts for 10 days, ending with the visarjan (immersion) of the idol in water. Devotees sing, dance, and chant “Ganpati Bappa Morya”, spreading joy and devotion."
+          },
+          {
+            image: "slider/festival/image7.avif",
+            title: "Onam",
+            description: "Onam is the biggest festival in Kerala, celebrated to welcome the legendary King Mahabali. It usually falls in August or September and marks the harvest season. The festival lasts for 10 days and includes vibrant flower decorations (Pookalam), boat races, traditional dances, and the grand Onam Sadhya—a feast served on banana leaves. Onam reflects the spirit of unity, prosperity, and cultural pride."
+          }
+        ];
+      
+        let currentIndex2 = 0;
+      
+        function updateSlider2() {
+          const img = document.getElementById("slider-image-2");
+          const info = document.getElementById("slider-info-2");
+      
+          img.src = slides2[currentIndex2].image;
+          img.alt = slides2[currentIndex2].title;
+          info.innerHTML = `
+            <h2>${slides2[currentIndex2].title}</h2>
+            <p>${slides2[currentIndex2].description}</p>
+          `;
+        }
+      
+        function prevSlide2() {
+          currentIndex2 = (currentIndex2 - 1 + slides2.length) % slides2.length;
+          updateSlider2();
+        }
+      
+        function nextSlide2() {
+          currentIndex2 = (currentIndex2 + 1) % slides2.length;
+          updateSlider2();
+        }
+      
+        updateSlider2();
+      </script>
+      
+      <div class="slider-container">
+        <div class="image-section">
+          <button onclick="prevSlide3()">←</button>
+          <img id="slider-image-3" src="slider3/image1.jpg" alt="Slide Image">
+          <button onclick="nextSlide3()">→</button>
+        </div>
+        <div class="info-section" id="slider-info-3">
+          <h2>Title 3</h2>
+          <p>Description for image 3.</p>
+        </div>
+      </div>
+      
+      <script>
+        const slides3 = [
+        {
+            image: "slider/travel/image1.avif",
+            title: "Manali",
+            description: "Manali is a scenic hill station nestled in the Himalayas, popular for its snow-capped peaks, adventure sports, and peaceful landscapes. Whether it's skiing in Solang Valley, trekking to Hampta Pass, or relaxing by the Beas River, Manali offers a perfect mix of thrill and serenity, making it a year-round destination."
+          },
+          {
+            image: "slider/travel/image2.avif",
+            title: "Jaipur",
+            description: "Jaipur, the Pink City, is known for its rich Rajput heritage, colorful bazaars, and majestic forts like Amber Fort and City Palace. Part of the Golden Triangle, Jaipur dazzles with traditional art, food, and architecture, giving travelers a royal glimpse into Rajasthan’s cultural heart."
+          },
+          {
+            image: "slider/travel/image3.avif",
+            title: "Goa",
+            description: "Goa is India’s beach paradise, famous for its vibrant nightlife, Portuguese heritage, and stunning coastlines. From the lively beaches of Baga and Calangute to the serene churches of Old Goa, it’s a favorite for both relaxation and parties, especially during the festive season."
+          },
+          {
+            image: "slider/travel/image4.avif",
+            title: "Rishikesh",
+            description: "Rishikesh, located on the banks of the Ganga River, is known as the Yoga Capital of the World. It draws spiritual seekers, adventurers, and nature lovers alike. Whether you’re meditating in an ashram or rafting through river rapids, Rishikesh is a blend of peace and thrill."
+          },
+          {
+            image: "slider/travel/image5.avif",
+            title: "Jaipur",
+            description: "Udaipur, often called the City of Lakes, is a romantic destination filled with palaces, temples, and tranquil lakes like Lake Pichola. The stunning City Palace and boat rides with sunset views make it an ideal spot for a relaxed, royal getaway."
+          },
+          {
+            image: "slider/travel/image6.avif",
+            title: "Munnur",
+            description: "Munnar is a picturesque hill station in Kerala, surrounded by endless tea plantations, misty mountains, and wildlife sanctuaries. Ideal for a quiet retreat, visitors can explore the Eravikulam National Park, visit tea museums, and enjoy Kerala’s calm, green landscape."
+          },
+          {
+            image: "slider/travel/image7.avif",
+            title: "Andaman & Nicobar Islands",
+            description: "The Andaman & Nicobar Islands offer crystal-clear beaches, scuba diving, and coral reefs, making them perfect for ocean lovers. Famous spots like Havelock Island and the Cellular Jail combine adventure with historical depth, giving travelers an offbeat yet unforgettable experience."
+          }
+        ];
+
+        let currentIndex3 = 0;
+
+        function updateSlider3() {
+          const img = document.getElementById("slider-image-3");
+          const info = document.getElementById("slider-info-3");
+
+          img.src = slides3[currentIndex3].image;
+          img.alt = slides3[currentIndex3].title;
+          info.innerHTML = `
+            <h2>${slides3[currentIndex3].title}</h2>
+            <p>${slides3[currentIndex3].description}</p>
+          `;
+        }
+
+        function prevSlide3() {
+          currentIndex3 = (currentIndex3 - 1 + slides3.length) % slides3.length;
+          updateSlider3();
+        }
+
+        function nextSlide3() {
+          currentIndex3 = (currentIndex3 + 1) % slides3.length;
+          updateSlider3();
+        }
+
+
+          updateSlider3();
+      </script>
+    </div>
+
+    <div class="city">
+      <div class="city-container">
+        <h2>The Great Indian Cities</h2>
+
+          <ul class="city-card-wrapper">
+            <li class="c-card">
+              <img src="cities/delhi.jpg">
+              <h3>
+                <a href>Delhi</a>
+              </h3>
+              <p>
+                The Capital of India
+              </p>
+            </li>
+
+            <li class="c-card">
+              <img src="cities/mumbai.jpg">
+              <h3>
+                <a href>Mumbai</a>
+              </h3>
+              <p>
+                The Financial Capital Of India
+              </p>
+            </li>
+
+            <li class="c-card">
+              <img src="cities/banglore.jpg">
+              <h3>
+                <a href>Bangalore</a>
+              </h3>
+              <p>
+                The Silicon Valley Of India
+              </p>
+            </li>
+
+            <li class="c-card">
+              <img src="cities/kolkata.jpg">
+              <h3>
+                <a href>Kolkata</a>
+              </h3>
+              <p>
+                Cultural Capital Of India
+              </p>
+            </li>
+
+            <li class="c-card">
+              <img src="cities/varanasi.jpg">
+              <h3>
+                <a href>Varanasi</a>
+              </h3>
+              <p>
+                Spiritual Capital Of India
+              </p>
+            </li>
+
+            <li class="c-card">
+              <img src="cities/pune.jpg">
+              <h3>
+                <a href>Pune</a>
+              </h3>
+              <p>
+                Oxford Of The East
+              </p>
+            </li>
+          </ul>
+      </div>
+    </div>
+    <section id="Gallery">
+    <div class="gallery-container">
+      <h2>Gallery</h2>
+      <div class="masonry">
+        <img src="gallery/image1.jpg" alt="">
+        <img src="gallery/image2.jpg" alt="">
+        <img src="gallery/image3.jpg" alt="">
+        <img src="gallery/image4.jpg" alt="">
+        <img src="gallery/image5.jpg" alt="">
+        <img src="gallery/image6.jpg" alt="">
+        <img src="gallery/image7.jpg" alt="">
+        <img src="gallery/image8.jpg" alt="">
+        <img src="gallery/image9.jpg" alt="">
+        <img src="gallery/image10.jpg" alt="">
+        <img src="gallery/image11.jpg" alt="">
+        <img src="gallery/image12.jpg" alt="">
+        <img src="gallery/image13.jpg" alt="">
+        <img src="gallery/image29.jpg" alt="">
+        <img src="gallery/image15.jpg" alt="">
+        <img src="gallery/image16.jpg" alt="">
+        <img src="gallery/image17.jpg" alt="">
+        <img src="gallery/image18.jpg" alt="">
+        <img src="gallery/image19.jpg" alt="">
+        <img src="gallery/image20.jpg" alt="">
+
+
+        <div class="spacer"></div>
+      </div>
+    </div>
+    </section>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-par">
+          <div class="footer-1">
+            <h2>
+              Travel With Us
+            </h2>
+          </div>
+
+          <div class="footer-2">
+            <h2>Dekho Apna Desh!</h2>
+            <ul>
+              <li>
+                <a href="https://indianculture.gov.in/">Indian Culture</a>
+              </li>
+              <li>
+                <a href="https://www.incredibleindia.gov.in/en">Incrdible !ndia</a>
+              </li>
+              <li>
+                <a href="https://www.indiaculture.gov.in/">Ministry Of Culture</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-3">
+            <h2>Visit For More</h2>
+            <ul>
+              <li>
+                <a href="https://www.mygov.in/">MyGov</a>
+              </li>
+              <li>
+                <a href="https://www.digitalindia.gov.in/">Digital India</a>
+              </li>
+              <li>
+                <a href="https://tourism.gov.in/">Ministry Of Tourism</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-4">
+            <h2>Contact Us</h2>
+            <ul>
+              <a>
+                <a href="https://www.linkedin.com/in/prathamesh-yewale-3a72a432b/">Prathamesh Yewale</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="footer-end">Developed By PY</p>
+    </footer>
+
+    <script>
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        const scrollThreshold = window.innerHeight / 2; // Halfway through the viewport height
+    
+        if (window.scrollY > scrollThreshold) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+    </script>
+  </body>
+</html>

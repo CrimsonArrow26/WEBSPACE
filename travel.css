@@ -1,0 +1,152 @@
+body {
+  font-family: Arial, sans-serif;
+  background: rgba(156, 143, 75, 0.755);
+  padding: 20px;
+}
+
+.navbar {
+  height: 60px;
+  font-family: rubik, arial;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0px;
+  left: 0;
+  right: 0;
+  background-color: rgb(217, 78, 24);
+  transition: background-color 0.5s ease;
+  color: white;
+  z-index: 50;
+}
+
+
+
+.navbar-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  padding: 5px 0px 0px 120px;
+
+}
+
+.logo a{
+  text-decoration: none;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin-left: auto;
+  margin-right: 50px;
+  padding: 5px 20px 0px 0px;
+  justify-content: space-evenly;
+}
+
+.nav-links li {
+  margin-left: 50px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: rgb(200, 200, 200);
+}
+
+.container {
+  max-width: 600px;
+  position: relative;
+  margin: auto;
+  margin-top: 70px;
+  padding: 60px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255);
+  z-index: 1;
+}
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(https://i.pinimg.com/736x/f9/de/0c/f9de0c87a2ec0844dce48e959b05a076.jpg);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.6; 
+  
+  border-radius: 10px; 
+  z-index: -1;
+}
+
+
+.container h2{
+  font-family: satisfy, froboko, raleway;
+  font-size: 38px;
+  color: black;
+  backdrop-filter: blur(5.5px);
+}
+.container label{
+  font-family: froboko, raleway;
+  font-size: 18px;
+  font-weight: 600;
+}
+input, select, button {
+  width: 98%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid rgb(204, 204, 204);
+}
+button{
+  background-color: rgb(83, 169, 40);
+  border: 1px solid rgb(83, 169, 40);
+  cursor: pointer;
+}
+.results {
+  margin-top: 20px;
+}
+.results a {
+  display: block;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+select {
+  font-family: froboko, raleway; 
+  font-size: 16px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+option {
+  background-color: #f9f9f9;
+  color: #333;
+  font-size: 14px;
+  padding: 5px;
+}
+
+button{
+  font-family: Froboko, raleway;
+  font-weight: 500;
+  font-size: 15px;
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Travel Planner</title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="travel.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+      <link href="https://fonts.cdnfonts.com/css/fredoka" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">            
+    </head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-container">
+        <div class="logo">
+          <a href="index.html">
+            <h2>!NDIA</h2>
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="heritage.html">Heritage</a></li>
+          <li><a href="travel.html">Travel</a></li>
+          <li><a href="index.html#Gallery">Gallery</a></li>
+        </ul>
+    </div>
+  </nav>
+
+    <div class="container" id="travel-background">
+      <h2>Every mile tells a tale; Let's begin yours!</h2>
+      <form id="travelForm">
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" required />
+
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" required />
+
+        <label for="travellers">Number of Travellers:</label>
+        <input type="number" id="travellers" required min="1" />
+
+        <label for="destination">Destination:</label>
+        <select id="destination" required>
+          <option value="">-- Select --</option>
+          <option value="Goa">Goa</option>
+          <option value="Jaipur">Jaipur</option>
+          <option value="Manali">Manali</option>
+          <option value="Kerala">Kerala</option>
+        </select>
+
+        <button type="submit">Show Options</button>
+      </form>
+
+      <div class="results" id="results"></div>
+    </div>
+
+
+  <script>
+    const form = document.getElementById('travelForm');
+    const resultsDiv = document.getElementById('results');
+
+    const travelLinks = {
+      Goa: [
+        { name: "MakeMyTrip", url: "https://www.makemytrip.com/holidays-india/goa-travel-packages.html", minDays: 2 },
+        { name: "Yatra", url: "https://www.yatra.com/india-tour-packages/holidays-in-goa", minDays: 3 }
+      ],
+      Jaipur: [
+        { name: "Yatra", url: "https://www.yatra.com/india-tour-packages/holidays-in-jaipur", minDays: 1 },
+        { name: "Goibibo", url: "https://www.goibibo.com/holidays/jaipur-tour-packages/", minDays: 2 }
+      ],
+      Manali: [
+        { name: "Thomas Cook", url: "https://www.thomascook.in/tour-packages/india/manali", minDays: 3 },
+        { name: "MakeMyTrip", url: "https://www.makemytrip.com/holidays-india/manali-travel-packages.html", minDays: 2 }
+      ],
+      Kerala: [
+        { name: "TravelTriangle", url: "https://traveltriangle.com/tour-packages/kerala", minDays: 4 },
+        { name: "MakeMyTrip", url: "https://www.makemytrip.com/holidays-india/kerala-travel-packages.html", minDays: 2 }
+      ]
+    };
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const startDate = new Date(document.getElementById('startDate').value);
+      const endDate = new Date(document.getElementById('endDate').value);
+      const travellers = document.getElementById('travellers').value;
+      const destination = document.getElementById('destination').value;
+
+      if (!startDate || !endDate || !travellers || !destination) {
+        resultsDiv.innerHTML = `<p style="color:red;">Please fill all the fields.</p>`;
+        return;
+      }
+
+      const daysDiff = (endDate - startDate) / (1000 * 60 * 60 * 24);
+      if (daysDiff < 0) {
+        resultsDiv.innerHTML = `<p style="color:red;">End date must be after start date.</p>`;
+        return;
+      }
+
+      const availableOptions = travelLinks[destination].filter(option => daysDiff + 1 >= option.minDays);
+
+      if (availableOptions.length > 0) {
+        let optionsHtml = `<h3>Available Options</h3>
+          <p><strong>Destination:</strong> ${destination}</p>
+          <p><strong>Dates:</strong> ${startDate.toDateString()} to ${endDate.toDateString()}</p>
+          <p><strong>Travellers:</strong> ${travellers}</p>`;
+
+        availableOptions.forEach(option => {
+          optionsHtml += `<a href="${option.url}" target="_blank">Book with ${option.name} (Min. ${option.minDays} days)</a>`;
+        });
+
+        resultsDiv.innerHTML = optionsHtml;
+        resultsDiv.style.backgroundColor = "#f0f8ff"; 
+        resultsDiv.style.padding = "15px";
+        resultsDiv.style.borderRadius = "8px";
+      } else {
+        resultsDiv.innerHTML = `<p>No travel options available for selected destination and duration.</p>`;
+        resultsDiv.style.backgroundColor = "#ffe4e1";
+        resultsDiv.style.padding = "15px";
+        resultsDiv.style.borderRadius = "8px";
+      }
+    });
+  </script>
+  
+</body>
