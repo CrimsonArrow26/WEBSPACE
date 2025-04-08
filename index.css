@@ -184,32 +184,18 @@ section {
   color: seashell
 }
 
-.hero{
-  position: sticky;
-
-  top: 20px;
-  left: 20px;
-  right: 20px;
-  z-index: 1;
-  width: 100%;
-  margin-top: 205px;
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  gap: 30px;
-  justify-content: space-evenly;
-  
-}
 .hero {
   display: flex;
-  overflow: visible;
+  flex-direction: row;         /* side by side on desktop */
+  justify-content: space-evenly;
+  align-items: center;
   gap: 30px;
+  width: 100%;
+  margin-top: 205px;
   background-color: rgb(253, 246, 227);
   height: 450px;
+  overflow: visible;
 }
-
-
-
 
 .card{
   width: 300px;
@@ -631,4 +617,305 @@ footer{
   font-family: raleway, froboko;
   letter-spacing: 0.25rem;
   font-weight: bold;
+}
+
+/* For tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .logo {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+
+
+/*
+  .card {
+    width: 90%;
+    height: auto;
+    margin: 10px auto;
+  }*/
+
+  .slider-container {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+
+  .image-section img {
+    width: 100%;
+    height: auto;
+  }
+
+  .info-section {
+    padding: 10px;
+  }
+
+  .city-container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .footer-par {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-par h2 {
+    margin-bottom: 10px;
+  }
+
+  .footer-par a {
+    font-size: 16px;
+  }
+}
+
+/* For mobile devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .logo {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links li {
+    margin: 5px 0;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+    margin-right: 20px;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(217, 78, 24);
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+
+  /* Slider Container */
+  @media (max-width: 768px) {
+    .slider-container {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      width: 100%;
+      margin: 20px auto;
+      gap: 20px;
+      height: auto;
+    }
+  
+    .image-section {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      margin: 0 auto;
+    }
+  
+    .image-section img {
+      width: 90%;
+      height: auto;
+      border-radius: 10px;
+    }
+  
+    .image-section button {
+      width: 35px;
+      height: 35px;
+      font-size: 18px;
+      margin: 5px;
+    }
+  
+    .info-section {
+      width: 100%;
+      padding: 10px;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .info-section h2 {
+      font-size: 22px;
+      margin-top: 10px;
+    }
+  
+    .info-section p {
+      padding: 15px;
+      font-size: 14px;
+    }
+  }
+  
+  .city-card-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .footer-container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .footer-par {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-par h2 {
+    margin-bottom: 10px;
+  }
+
+  .footer-par a {
+    font-size: 14px;
+  }
+
+  .footer-end {
+    font-size: 12px;
+    padding: 10px;
+  }
+}
+
+/* For very small devices (max-width: 480px) */
+@media (max-width: 480px) {
+  /* Navbar */
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 5px;
+  }
+
+  .logo {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links li {
+    margin: 5px 0;
+  }
+
+  /* Slider Container */
+  .slider-container {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .image-section img {
+    width: 100%;
+    height: auto;
+  }
+
+  .info-section {
+    padding: 5px;
+  }
+
+  /* Footer */
+  .footer-container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .footer-par {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-par h2 {
+    margin-bottom: 5px;
+  }
+
+  .footer-par a {
+    font-size: 12px;
+  }
+
+  .footer-end {
+    font-size: 10px;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 100px;
+    height: auto;
+  }
+
+  .hero .card {
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+}
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    height: auto; /* Let it grow based on content */
+    margin-top: 150px;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 350px;
+    margin: 10px 0;
+  }
 }
