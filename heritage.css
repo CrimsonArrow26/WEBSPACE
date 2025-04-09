@@ -137,7 +137,7 @@ body{
 }
 
 
-/* Tablet (below 1024px) */
+
 @media (max-width: 1024px) {
   .navbar {
     flex-direction: column;
@@ -176,7 +176,7 @@ body{
   }
 }
 
-/* Mobile (below 768px) */
+
 @media (max-width: 768px) {
   .navbar {
     padding: 8px;
@@ -199,7 +199,7 @@ body{
   }
 }
 
-/* Small mobile (below 480px) */
+
 @media (max-width: 480px) {
   .navbar {
     padding: 5px;

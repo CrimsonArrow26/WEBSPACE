@@ -183,7 +183,7 @@ button{
   .container {
     max-width: 90%;
     padding: 40px;
-    margin-top: 160px; /* moved further down */
+    margin-top: 160px;
   }
 
   input, select, button {
@@ -229,7 +229,7 @@ button{
   .container {
     max-width: 95%;
     padding: 20px;
-    margin-top: 180px; /* moved further down */
+    margin-top: 180px; 
   }
 
   .container h2 {
@@ -284,7 +284,7 @@ button{
   .container {
     max-width: 100%;
     padding: 15px;
-    margin-top: 200px; /* moved further down */
+    margin-top: 200px;
   }
 
   .container h2 {

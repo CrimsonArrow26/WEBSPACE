@@ -619,7 +619,7 @@ footer{
   font-weight: bold;
 }
 
-/* For tablets (max-width: 1024px) */
+
 @media (max-width: 1024px) {
   .navbar {
     flex-direction: column;
@@ -686,7 +686,7 @@ footer{
   }
 }
 
-/* For mobile devices (max-width: 768px) */
+
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
@@ -740,7 +740,7 @@ footer{
   }
 
 
-  /* Slider Container */
+
   @media (max-width: 768px) {
     .slider-container {
       flex-direction: column;
@@ -796,7 +796,7 @@ footer{
     grid-template-columns: 1fr;
   }
 
-  /* Footer */
+
   .footer-container {
     width: 100%;
     padding: 10px;
@@ -822,9 +822,8 @@ footer{
   }
 }
 
-/* For very small devices (max-width: 480px) */
+
 @media (max-width: 480px) {
-  /* Navbar */
   .navbar {
     flex-direction: column;
     height: auto;
@@ -846,7 +845,6 @@ footer{
     margin: 5px 0;
   }
 
-  /* Slider Container */
   .slider-container {
     flex-direction: column;
     height: auto;
@@ -862,7 +860,7 @@ footer{
     padding: 5px;
   }
 
-  /* Footer */
+ 
   .footer-container {
     width: 100%;
     padding: 10px;
@@ -909,7 +907,7 @@ footer{
   .hero {
     flex-direction: column;
     align-items: center;
-    height: auto; /* Let it grow based on content */
+    height: auto;
     margin-top: 150px;
   }
 
