@@ -195,7 +195,8 @@ input:checked + .slider:before {
   width: 66px;
   height: 24px;
   top: 36px;
-  padding-left: 10px;
+  margin-left: 25px;
+  padding-bottom: 8px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -204,6 +205,22 @@ input:checked + .slider:before {
   justify-content: center;
   color: #4E4E61;
   transition: color 0.3s ease;
+}
+
+.nav-item:focus,
+.add-button:focus,
+.nav-item svg:focus,
+.add-button svg:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.nav-item:active,
+.add-button:active,
+.nav-item svg:active,
+.add-button svg:active {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .nav-item:hover {

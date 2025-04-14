@@ -3,6 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
 
 body{
             font-size: 16px;
@@ -165,10 +169,11 @@ body{
   
   .nav-item {
     position: absolute;
-    width: 66px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     top: 36px;
-    padding-left: 10px;
+    margin-left: 25px;
+    padding-bottom: 8px;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -176,13 +181,24 @@ body{
     align-items: center;
     justify-content: center;
     color: #4E4E61;
-    transition: color 0.3s ease;
+    transition: color 0.8s ease;
+  }
+
+
+
+  .nav-item svg {
+    transition: transform 0.8s ease, fill 0.3s ease;
   }
   
-  .nav-item:hover {
-    color: #FF7966;
+  .nav-item:hover svg {
+    transform: scale(1.2);
+    fill: #FF7966;
   }
   
+  .nav-item:active svg {
+    transform: scale(0.9);
+    fill: #FF5733;
+  }
   .nav-item:nth-child(2) { left: 0; }
   .nav-item:nth-child(3) { left: 66px; }
   .nav-item:nth-child(5) { left: 197px; }
@@ -211,4 +227,11 @@ body{
   
   .add-button:active {
     transform: scale(0.95);
+  }
+
+  @media (pointer: coarse) {
+    a, svg {
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+    }
   }
