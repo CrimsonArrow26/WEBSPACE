@@ -5,27 +5,23 @@
   
 }
 
-body{
-  font-size: 16px;
-  background-color: rgb(237, 237, 237);
+body, html {
+  height: 100%;
 }
 
-.container{
-  background-color: rgb(237, 237, 237);
-  height: 1000px;
-
+.container {
+  background-color: rgb(218, 218, 219);
+  min-height: 100dvh; /* dynamic viewport height */
+  padding-bottom: 100px; /* create space for navbar */
 }
 
-.hero{
-  background-color: rgb(237, 237, 237);
-  position: fixed;
+.hero {
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  top: 0px;
-  z-index: 1;
-  align-items: center;
+  align-items: flex-start; /* keep content pinned left */
+  padding: 30px;
+  width: 100%; /* make hero stretch full width */
+  background-color: rgb(237, 237, 237);
 }
 
 .hero h3{
@@ -36,18 +32,21 @@ font-family: secular one;
 font-weight: 400 ;
 }
 
-.notifications{
-list-style-type: none;
-padding: 0;
-margin: 30px 0px 0px 0px;
-width: max-content;
+.notifications {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 30px;
+  width: 100%; /* stretch full width */
+  max-width: 100%; /* prevent overflow */
 }
 
-.noti1{
-  padding: 25px; 
+.noti1 {
+  width: 100%; /* make each notification expand */
   background-color: #f9f9f9;
   border-bottom: 1px solid #ddd;
   font-size: 16px;
+  padding: 25px;
+  box-sizing: border-box;
 }
 
 .notification-item p {
