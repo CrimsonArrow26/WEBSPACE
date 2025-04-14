@@ -1,0 +1,88 @@
+*{
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.container{
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow:hidden;
+}
+
+.background-image{
+  position: absolute;
+  top: 30px;
+  left: 70px;
+  width: 430px;
+  height: 700px;
+  object-fit: auto;
+  z-index: 1;
+  filter: blur(30px);
+}
+
+.background-image1{
+  position: absolute;
+  top: 80px;
+  left: 0px;
+  width: 100%px;
+  height: 550px;
+  object-fit: auto;
+  z-index: 1;
+}
+
+.overlay{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 2;
+}
+
+.content{
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: black;
+  margin-top: 700px;
+  height: max-content;
+}
+
+.buttons{
+  margin-top: 45px;
+  padding: 0;
+  width: auto;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  gap: 15px;
+}
+
+.content button.primary, .content button.secondary{
+  margin: 10px;
+  width: 324px;
+  height: 48px;
+  margin-top: 0;
+  align-content: center;
+  justify-content: center;
+  background: #ff7966;
+  border: none;
+  border-radius: 99px;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  z-index: 4;
+}
+
+.content button.primary{
+  background-color: rgb(40, 99, 238);
+}
+
+.content button.secondary{
+  background-color: rgba(40, 99, 238, 60%);
+}

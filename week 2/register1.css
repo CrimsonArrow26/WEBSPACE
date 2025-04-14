@@ -1,0 +1,112 @@
+*{
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.container{
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow:hidden;
+}
+
+.background-image{
+  position: absolute;
+  top: 10px;
+  left: 210px;
+  width: 430px;
+  height: 700px;
+  object-fit: auto;
+  z-index: 1;
+  filter: blur(65px);
+  transform: rotate(-45deg);
+}
+
+.background-image1{
+  position: absolute;
+  top: 295px;
+  right: 195px;
+  width: 430px;
+  height: 700px;
+  object-fit: auto;
+  z-index: 1;
+  filter: blur(105px);
+  transform: rotate(-35deg);
+}
+
+
+.overlay{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(209, 209, 209, 0.089);
+  z-index: 2;
+}
+
+.content{
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: black;
+  margin-top: 430px;
+  height: max-content;
+  justify-items: center;
+}
+
+.buttons{
+  margin-top: 35px;
+  padding: 0;
+  width: auto;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  gap: 15px;
+}
+
+.content button.primary, .content button.secondary, .content button.tertiary, .content button.quaternary{
+  margin: 10px;
+  width: 324px;
+  height: 48px;
+  margin-top: 0;
+  align-content: center;
+  justify-content: center;
+  background: #ff7966;
+  border: none;
+  border-radius: 99px;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  z-index: 4;
+}
+
+.content p{
+  display: flex;
+  flex-direction: row;
+  padding: 30px 0px;
+}
+
+.content button.primary{
+  background-color: rgb(40, 99, 238);
+}
+
+.content button.secondary{
+  background-color: rgba(40, 99, 238, 60%);
+}
+
+
+
+
+
+
+
+.terms{
+  width: 326px;
+  height: 32px;
+  font-size: 12px;
+  margin-top: 70px;
+}
