@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="complaint.css" />
+    <link rel="stylesheet" href="about.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,57 +17,26 @@
   <body>
     <div class="container">
       <div class="hero">
-        <h1>Add complaint</h1>
-
-        <div class="complaint-info">
-          <div class="form-group" id="nameGroup">
-            <label><strong>Name</strong></label>
-            <input type="text" id="nameInput" placeholder="Enter Your Name" />
-          </div>
-
-          <div class="form-group">
-            <label>Title</label>
-            <input type="text" placeholder="Title of Complaint" />
-          </div>
-
-          <div class="form-group">
-            <label>Type</label>
-            <input type="text" placeholder="Type of complaint" />
-          </div>
-
-          <div
-            class="form-group description-group"
-            onclick="expandDescription()"
-          >
-            <label for="descriptionInput">Description</label>
-            <div class="description-container">
-              <div id="descriptionDisplay" class="description-display">
-                Type here...
-              </div>
-              <textarea
-                id="descriptionInput"
-                class="description-input"
-                placeholder="Type here..."
-                onkeydown="handleEnter(event)"
-              ></textarea>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label>Additional Information</label>
-            <span class="camera-icon">📷</span>
-          </div>
-
-          <div class="form-group">
-            <label><strong>Anonymity</strong></label>
-            <label class="switch">
-              <input type="checkbox" id="anonymityToggle" checked />
-              <span class="slider"></span>
-            </label>
-          </div>
+        <h3>About Us</h3>
+        <div class="video">
+          <video width="320" height="240 controls">
+            <source src="resources/video.mp4" type="video/mp4" />
+          </video>
         </div>
-        <div class="submit-button">
-          <button>Submit your Complaint</button>
+        <div class="info">
+          <p>
+            At Nivaran, we believe that solving everyday local problems
+            shouldn't be a struggle. Our mission is to empower citizens to
+            report issues around them—be it potholes, broken streetlights,
+            garbage dumps, or water leakage—with just a few taps. Nivaran
+            bridges the gap between people and problem-solvers by offering a
+            simple, intuitive platform where users can mark issues directly on a
+            map, describe them, and track updates as they get resolved. Whether
+            you're a concerned resident or part of a responsible organization,
+            Nivaran helps create more transparent, accountable, and livable
+            communities. We’re not just an app we’re a movement to make
+            neighborhoods better, one fix at a time.
+          </p>
         </div>
       </div>
 
@@ -151,9 +120,9 @@
               </svg>
             </a>
             <!-- <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" stroke-width="2">
-                              <line x1="8" y1="1" x2="8" y2="15"></line>
-                              <line x1="1" y1="8" x2="15" y2="8"></line>
-                          </svg> -->
+                                        <line x1="8" y1="1" x2="8" y2="15"></line>
+                                        <line x1="1" y1="8" x2="15" y2="8"></line>
+                                    </svg> -->
           </button>
 
           <button class="nav-item" aria-label="Updates">
@@ -192,14 +161,14 @@
               </svg>
             </a>
             <!-- <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255, 255, 255, 0.3)" stroke="currentColor" stroke-width="2">
-                              <circle cx="12" cy="12" r="3"></circle>
-                              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                          </svg> -->
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                                    </svg> -->
           </button>
         </div>
       </div>
     </div>
 
-    <script src="complaint.js"></script>
+    <script src="about.js"></script>
   </body>
 </html>
