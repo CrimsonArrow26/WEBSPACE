@@ -97,29 +97,24 @@ width: max-content;
   align-items: center;
   justify-content: center;
   color: #4E4E61;
-  transition: color 0.3s ease;
+  transition: color 0.8s ease;
 }
 
-.nav-item:focus,
-.add-button:focus,
-.nav-item svg:focus,
-.add-button svg:focus {
-  outline: none !important;
-  box-shadow: none !important;
+
+
+.nav-item svg {
+  transition: transform 0.8s ease, fill 0.3s ease;
 }
 
-.nav-item:active,
-.add-button:active,
-.nav-item svg:active,
-.add-button svg:active {
-  outline: none !important;
-  box-shadow: none !important;
+.nav-item:hover svg {
+  transform: scale(1.2);
+  fill: #FF7966;
 }
 
-.nav-item:hover {
-  color: #FF7966;
+.nav-item:active svg {
+  transform: scale(0.9);
+  fill: #FF5733;
 }
-
 .nav-item:nth-child(2) { left: 0; }
 .nav-item:nth-child(3) { left: 66px; }
 .nav-item:nth-child(5) { left: 197px; }
@@ -148,4 +143,11 @@ width: max-content;
 
 .add-button:active {
   transform: scale(0.95);
+}
+
+@media (pointer: coarse) {
+  a, svg {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+  }
 }

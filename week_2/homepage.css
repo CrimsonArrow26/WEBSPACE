@@ -1,47 +1,38 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 *:focus {
   outline: none !important;
   box-shadow: none !important;
 }
 
-body{
-            font-size: 16px;
-        }
-
-.container{
-    background-color: rgb(218, 218, 219);
-    height: 1000px;
-
+body {
+  font-size: 16px;
 }
 
-.header{
-    background-color: rgba(17, 24, 149, 0.9);
-    display: flex;
-    align-items: flex-end;
-    justify-content: end;
-    height: 80px;
-    width: 100%;
-    margin: 0px 0px;
-    padding: 0px 10px;
-    top: 0;
-    right: 0;
-    position: fixed;
-    z-index: 2;
+.container {
+  background-color: rgb(218, 218, 219);
+  height: 1000px;
 }
 
-.region{
+.header {
+  background-color: rgba(17, 24, 149, 0.9);
   display: flex;
-  flex-direction: row;
-  margin-bottom: 10px;
-  bottom: 0;
+  align-items: flex-end;
+  justify-content: end;
+  height: 80px;
+  width: 100%;
+  margin: 0px 0px;
+  padding: 0px 10px;
+  top: 0;
   right: 0;
+  position: fixed;
+  z-index: 2;
 }
 
-.region{
+.region {
   display: flex;
   flex-direction: row;
   align-items: end;
@@ -52,6 +43,7 @@ body{
   font-size: 14px;
   color: #e0e0e0;
 }
+
 .nivaran {
   position: fixed;
   top: 10px;
@@ -61,25 +53,26 @@ body{
   padding: 8px 16px;
   border-radius: 8px;
   font-size: 14px;
-  z-index: 3; /* Ensure it appears above other elements */
+  z-index: 3;
 }
 
-.hero{
-    background-color: rgb(237, 237, 237);
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 80px;
-    z-index: 1;
+.hero {
+  background-color: rgb(237, 237, 237);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 80px;
+  z-index: 1;
+  overflow-y: auto;
 }
 
-.hero h1{
-  padding: 10px 0px 0px 20px ;
+.hero h1 {
+  padding: 10px 0px 0px 20px;
   font-family: secular one;
-  font-weight: 400 ;
+  font-weight: 400;
 }
 
-.issue-card{
+.issue-card {
   display: flex;
   align-items: center;
   background-color: brown;
@@ -88,7 +81,7 @@ body{
   height: 140px;
   border-radius: 10px;
   font-family: roboto;
-  margin: 30px 20px ;
+  margin: 30px 20px;
 }
 
 .issue-icon {
@@ -98,7 +91,6 @@ body{
   border: 2px solid #007bff;
   border-radius: 10px;
   margin-right: 12px;
-
 }
 
 .issue-info {
@@ -114,7 +106,6 @@ body{
   margin: 0;
   font-size: 18px;
   color: #007bff;
-  
 }
 
 .issue-info p {
@@ -136,99 +127,255 @@ body{
   line-height: 1.3;
 }
 
-
-
 .navbar {
-    width: 460px;
-    height: 82px;
-    position: fixed;
-    bottom: 20px;
-    margin: 0 auto;
-    left: 7%;
-    right: 0;
-    z-index: 999;
+  width: 460px;
+  height: 82px;
+  position: fixed;
+  bottom: 20px;
+  margin: 0 auto;
+  left: 7%;
+  right: 0;
+  z-index: 999;
+}
+
+.bottom-bar {
+  width: 429px;
+  height: 75px;
+  position: relative;
+  margin: -9px auto 0;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.nav-background {
+  position: absolute;
+  width: 329px;
+  height: 55px;
+  top: 20px;
+  left: 0;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.1));
+}
+
+.nav-item {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: 36px;
+  margin-left: 25px;
+  padding-bottom: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4E4E61;
+  transition: color 0.8s ease;
+}
+
+.nav-item svg {
+  transition: transform 0.8s ease, fill 0.3s ease;
+}
+
+.nav-item:hover svg {
+  transform: scale(1.2);
+  fill: #FF7966;
+}
+
+.nav-item:active svg {
+  transform: scale(0.9);
+  fill: #FF5733;
+}
+
+.nav-item:nth-child(2) { left: 0; }
+.nav-item:nth-child(3) { left: 66px; }
+.nav-item:nth-child(5) { left: 197px; }
+.nav-item:nth-child(6) { left: 263px; }
+
+.add-button {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  top: 9px;
+  left: 140px;
+  background: #FF7966;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 8px 25px rgba(255, 121, 102, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.add-button:hover {
+  transform: scale(1.05);
+}
+
+.add-button:active {
+  transform: scale(0.95);
+}
+
+@media (pointer: coarse) {
+  a, svg {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
   }
-  
-  .bottom-bar {
-    width: 429px;
-    height: 75px;
-    position: relative;
-    margin: -9px auto 0;
-    padding-right: 20px;
-    padding-left: 20px;
+}
+
+/* 📱 Responsive styles */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
   }
-  
-  .nav-background {
-    position: absolute;
-    width: 329px;
-    height: 55px;
-    top: 20px;
+
+  .container {
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .hero {
+    height: calc(100vh - 160px); /* header + navbar */
+    overflow-y: auto;
+  }
+
+  .issue-card {
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px;
+    margin: 15px auto;
+    width: 90%;
+  }
+
+  .issue-icon {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+  }
+
+  .issue-info {
+    margin-top: 10px;
+    width: calc(100% - 120px);
+    height: auto;
+  }
+
+  .issue-info strong {
+    font-size: 16px;
+  }
+
+  .location {
+    font-size: 13px;
+  }
+
+  .header {
+    height: 60px;
+  }
+
+  .nivaran {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .region {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+
+  .navbar {
+    width: 100%;
     left: 0;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.1));
+    right: 0;
+    margin: 0;
+    bottom: 10px;
   }
-  
+
+  .bottom-bar {
+    width: 100%;
+    height: 60px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .nav-background {
+    width: 100%;
+    max-width: 300px;
+    height: 50px;
+    top: 10px;
+    left: 0;
+  }
+
   .nav-item {
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    top: 36px;
-    margin-left: 25px;
-    padding-bottom: 8px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #4E4E61;
-    transition: color 0.8s ease;
+    width: 28px;
+    height: 28px;
+    top: 15px;
+    color: #fff;
   }
 
+  .nav-item:nth-child(2) {
+    left: 45px;
+  }
 
+  .nav-item:nth-child(3) {
+    left: 105px;
+  }
 
-  .nav-item svg {
-    transition: transform 0.8s ease, fill 0.3s ease;
+  .nav-item:nth-child(5) {
+    left: 240px;
   }
-  
-  .nav-item:hover svg {
-    transform: scale(1.2);
-    fill: #FF7966;
+
+  .nav-item:nth-child(6) {
+    left: 305px;
   }
-  
-  .nav-item:active svg {
-    transform: scale(0.9);
-    fill: #FF5733;
-  }
-  .nav-item:nth-child(2) { left: 0; }
-  .nav-item:nth-child(3) { left: 66px; }
-  .nav-item:nth-child(5) { left: 197px; }
-  .nav-item:nth-child(6) { left: 263px; }
-  
+
   .add-button {
-    position: absolute;
-    width: 48px;
-    height: 48px;
-    top: 9px;
-    left: 140px;
-    background: #FF7966;
-    border: none;
-    border-radius: 999px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0px 8px 25px rgba(255, 121, 102, 0.5);
-    transition: transform 0.3s ease;
+    left: 195px;
+    top: 10px;
+  }
+}
+  
+  /* Responsiveness for small devices */
+  @media (max-width: 480px) {
+    .navbar {
+      width: 100%;
+      height: auto;
+      bottom: 5px;
+    }
+  
+    .bottom-bar {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  
+    .nav-item {
+      top: 18px;
+      width: 26px;
+      height: 26px;
+    }
+  
+    .nav-item:nth-child(2) {
+      left: 15px;
+    }
+  
+    .nav-item:nth-child(3) {
+      left: 60px;
+    }
+  
+    .nav-item:nth-child(5) {
+      left: 150px;
+    }
+  
+    .nav-item:nth-child(6) {
+      left: 200px;
+    }
+  
+    .add-button {
+      left: 90px;
+      top: 10px;
+    }
   }
   
-  .add-button:hover {
-    transform: scale(1.05);
-  }
-  
-  .add-button:active {
-    transform: scale(0.95);
-  }
-
   @media (pointer: coarse) {
     a, svg {
       -webkit-tap-highlight-color: transparent;
