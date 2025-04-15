@@ -141,6 +141,7 @@ body, html {
   transform: translateX(-50%);
   margin: 0 auto;
   z-index: 999;
+  align-self: center;
 }
 
 .bottom-bar {
