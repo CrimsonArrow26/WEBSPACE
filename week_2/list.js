@@ -56,3 +56,16 @@ function renderComplaints() {
 }
 
 renderComplaints();
+
+document.querySelectorAll('.filter-button').forEach(button => {
+  button.addEventListener('click', () => {
+    const status = button.getAttribute('data-status');
+    document.querySelectorAll('.complaint-card').forEach(card => {
+      if (status === 'all' || card.classList.contains(status)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});

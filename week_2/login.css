@@ -5,13 +5,17 @@
   box-sizing: border-box;
 }
 
-.container{
+.container {
   position: relative;
   height: 100vh;
   width: 100%;
-  overflow:hidden;
-}
+  overflow: hidden;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center */
+  align-items: center;     /* Horizontally center */
+}
 .background-image{
   position: absolute;
   top: 10px;
@@ -47,19 +51,18 @@
   z-index: 1;
   pointer-events: none;
 }
-.login-form{
-  max-width:340px;;
-  height: max-content;
-  margin: auto;
-  margin-top: 460px;
-  margin-left: 40px;
+.login-form {
+  max-width: 340px;
+  width: 100%;
   font-family: sans-serif;
   color: rgb(26, 26, 158);
   z-index: 4;
   position: relative;
+  padding: 200px 20px 0 20px; /* Push inputs downward */
 }
 
-.login-form label[for="email"], label[for="password"] {
+.login-form label[for="email"],
+.login-form label[for="password"] {
   display: block;
   height: 20px;
   margin-top: 20px;
@@ -67,7 +70,8 @@
   color: #1a1a9e;
 }
 
-.login-form input[type="email"], input[type="password"]{
+.login-form input[type="email"],
+.login-form input[type="password"] {
   height: 48px;
   width: 100%;
   padding: 12px 16px;
@@ -76,40 +80,42 @@
   border-radius: 18px;
   font-size: 16px;
   background: #f6f6f6;
-  text-align: left;
   box-sizing: border-box;
 }
 
-.checkbox-container{
+.checkbox-container {
   display: flex;
-  flex-direction: row;
-  height: 30px;
-  margin: 30px 0px 0px 40px;
+  height: 24px;
   align-items: center;
-  position: relative;
-  z-index: 4;
+  gap: 10px;
+  margin-top: 20px;
+  padding-left: 2px;
+  font-size: 14px;
+  color: #1a1a9e;
 }
 
-.checkbox-container input[type="checkbox"]{
+.checkbox-container input[type="checkbox"] {
   height: 24px;
   width: 24px;
-  border-radius: 10px;
   margin: 0;
+  border-radius: 10px;
   cursor: pointer;
 }
 
-.checkbox-container label{
-  padding-left: 15px;
-  padding-top: 5px;
+.checkbox-container label {
+  font-size: 14px;
+  color: #1a1a9e;
   cursor: pointer;
-}
+  margin-top: 8px;
+  padding: 0;
+} 
 
 .content{
   position: relative;
   z-index: 3;
   text-align: center;
   color: black;
-  margin-top: 60px;
+  margin: 60px;
   height: max-content;
   justify-items: center;
 }
@@ -133,7 +139,6 @@
   margin-top: 0;
   align-content: center;
   justify-content: center;
-  background: #ff7966;
   border: none;
   border-radius: 99px;
   color: white;
@@ -149,11 +154,48 @@
 }
 
 .content button.primary{
-  background-color: rgb(40, 99, 238);
+  background-color: rgb(62, 60, 194);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 }
 
 .content button.secondary{
-  background-color: rgba(40, 99, 238, 60%);
+  background-color: rgba(54, 21, 163, 0.547);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+}
+
+/* For smaller screens */
+@media (max-width: 768px) {
+  .login-form {
+    margin-top: 300px; /* Shift form upwards */
+  }
+
+  .content {
+    margin-top: 30px; /* Shift content upwards */
+  }
+}
+
+/* For very small screens (mobile) */
+@media (max-width: 480px) {
+  .login-form {
+    margin-top: 180px; /* Move form higher */
+  }
+
+  .content {
+    margin-top: 10px;  /* Keep buttons closer to form */
+  }
+
+  .checkbox-container {
+    margin-left: 20px; /* Reduce horizontal spacing */
+  }
+
+  .login-form {
+    margin-left: 20px; /* Align better on small screens */
+  }
+
+  .content button.primary,
+  .content button.secondary {
+    width: 280px; /* Slightly narrower buttons for small screens */
+  }
 }
 
 

@@ -4,11 +4,15 @@
   height: 100%;
 }
 
-.container{
+.container {
   position: relative;
   height: 100vh;
   width: 100%;
-  overflow:hidden;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* This will vertically center the content */
+  align-items: center;
 }
 
 .background-image{
@@ -46,14 +50,16 @@
   z-index: 2;
 }
 
-.content{
+.content {
   position: relative;
   z-index: 3;
   text-align: center;
   color: black;
-  margin-top: 430px;
   height: max-content;
-  justify-items: center;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .buttons{
@@ -68,14 +74,16 @@
   gap: 15px;
 }
 
-.content button.primary, .content button.secondary, .content button.tertiary, .content button.quaternary{
-  margin: 10px;
+
+
+.content button.primary, .content button.secondary, .content button.tertiary{
+  margin: 0px;
   width: 324px;
   height: 48px;
   margin-top: 0;
   align-content: center;
   justify-content: center;
-  background: #ff7966;
+  /* background: #df5e4d; */
   border: none;
   border-radius: 99px;
   color: white;
@@ -84,20 +92,108 @@
   z-index: 4;
 }
 
+.content button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+button.primary {
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* spacing between icon and text */
+  background-color: rgb(0, 0, 0) !important;
+  border: none;
+  border-radius: 99px;
+  color: white;
+  font-size: 1rem;
+  padding: 12px 24px;
+  cursor: pointer;
+}
+
+button.secondary {
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* spacing between icon and text */
+  background-color: rgb(255, 255, 255) !important;
+  border: none;
+  border-radius: 99px;
+  color: rgb(0, 0, 0) !important;
+  font-size: 1rem;
+  padding: 12px 24px;
+  cursor: pointer;
+}
+
+button.tertiary {
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* spacing between icon and text */
+  background-color: rgb(40, 99, 238);
+  border: none;
+  border-radius: 99px;
+  color: white;
+  font-size: 1rem;
+  padding: 12px 24px;
+  cursor: pointer;
+}
+
+.content button.quaternary{
+  background: rgba( 255, 255, 255, 0.35 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 11px );
+-webkit-backdrop-filter: blur( 7px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+color: black;
+margin: 0px;
+padding: 10px;
+width: 324px;
+height: 48px;
+margin-top: 0;
+align-content: center;
+justify-content: center;
+/* background: #df5e4d; */
+border: none;
+border-radius: 99px;
+cursor: pointer;
+font-size: 1rem;
+z-index: 4;
+}
+
+.content button{
+  -webkit-tap-highlight-color: transparent;
+  -webkit-focus-ring-color: rgba(0,0,0,0);
+  outline: none;
+}
+
+button.primary .icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+button.secondary .icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+button.tertiary .icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
 .content p{
   display: flex;
   flex-direction: row;
-  padding: 30px 0px;
+  padding: 20px 0px;
 }
-
-.content button.primary{
-  background-color: rgb(40, 99, 238);
-}
-
-.content button.secondary{
-  background-color: rgba(40, 99, 238, 60%);
-}
-
 
 
 
@@ -110,3 +206,89 @@
   font-size: 12px;
   margin-top: 70px;
 }
+
+/* Make sure elements don't exceed the screen on smaller devices */
+@media (max-width: 768px) {
+  .background-image {
+    width: 300px;
+    height: 500px;
+    left: 50px;
+    top: 50px;
+  }
+
+  .background-image1 {
+    width: 300px;
+    height: 500px;
+    right: 50px;
+    top: 250px;
+  }
+
+  .content {
+    margin-top: 550px;
+    padding: 0 20px;
+  }
+
+  .buttons button,
+  .content button.quaternary {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  button {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-focus-ring-color: rgba(0, 0, 0, 0.301);
+    outline: none;
+  }
+
+  button:focus,
+button:active {
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.301);
+}
+
+  .terms {
+    width: 100%;
+    max-width: 300px;
+    margin: 30px auto 0;
+    text-align: center;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .background-image,
+  .background-image1 {
+    /* display: none; */
+  }
+
+  .content {
+    /* margin-top: 520px; */
+    margin-bottom: 200px;
+    padding: 0 15px;
+  }
+
+  .buttons button,
+  .content button.quaternary {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .content button {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-focus-ring-color: rgba(0,0,0,0);
+    outline: none;
+  }
+
+.content button:focus,
+.content button:active {
+  outline: none;
+  box-shadow: none;
+}
+
+
+  .terms {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+}
+

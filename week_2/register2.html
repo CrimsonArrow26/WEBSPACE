@@ -5,7 +5,9 @@
                 <meta http-equiv="X-UA-Compatible" content="IE=edge">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <link rel="stylesheet" href="register2.css">
-                
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&family=Satisfy&family=Secular+One&display=swap" rel="stylesheet">
                 <title>Document</title>
             </head>
             <body>
@@ -39,7 +41,7 @@
                   <div class="content">
                     <div class="buttons">
                       <a href="homepage.html">
-                        <button class="primary">Get started, it's free!</button>
+                        <button class="primary" id="getStartedBtn" type="submit">Get started, it's free!</button>
                       </a>
                       
                       <p>Do you already have an account?</p>
@@ -48,9 +50,20 @@
                       </a>
                       
                     </div>
+
+                    
                   </div>
+
+
                   
                   
+                </div>
+              </div>
+
+              <div id="passwordMismatchModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                  <span id="closeModal" style="cursor: pointer;">&times;</span>
+                  <p>Passwords do not match!</p>
                 </div>
               </div>
               <script src="register2.js"></script>

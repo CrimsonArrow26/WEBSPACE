@@ -1,30 +1,31 @@
-const toggle = document.getElementById('anonymityToggle');
-  const nameInput = document.getElementById('nameInput');
-  const nameGroup = document.getElementById('nameGroup');
+const toggle = document.getElementById("anonymityToggle");
+const nameInput = document.getElementById("nameInput");
+const nameGroup = document.getElementById("nameGroup");
 
-  toggle.addEventListener('change', () => {
-    const disabled = toggle.checked;
-    nameInput.disabled = disabled;
-    nameGroup.classList.toggle('disabled', disabled);
-  });
+toggle.addEventListener("change", () => {
+  const disabled = toggle.checked;
+  nameInput.disabled = disabled;
+  nameGroup.classList.toggle("disabled", disabled);
+});
 
-  const descDisplay = document.getElementById('descriptionDisplay');
-  const descInput = document.getElementById('descriptionInput');
-  
-  function expandDescription() {
-    descDisplay.style.display = 'none';
-    descInput.classList.add('show');
-    descInput.focus();
-  }
-  
-  function handleEnter(e) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      const lines = descInput.value.split('\n');
-      const preview = lines[0] || 'Enter Description';
-      descDisplay.textContent = preview;
-      descInput.classList.remove('show');
-      descDisplay.style.display = 'block';
-    }
-  }
-  
+document.getElementById("submitBtn").addEventListener("click", function () {
+  // Show toast first
+  showToast();
+
+  // Store a flag in localStorage to trigger the toast on homepage
+  localStorage.setItem("showToast", "true");
+
+  // Redirect to the homepage after showing the toast
+  setTimeout(function () {
+    window.location.href = "homepage.html"; // Redirect after 3 seconds (when toast disappears)
+  }, 3000); // Adjust time to match the toast display duration
+});
+
+function showToast() {
+  const toast = document.getElementById("toast");
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000); // Toast will disappear after 3 seconds
+}
