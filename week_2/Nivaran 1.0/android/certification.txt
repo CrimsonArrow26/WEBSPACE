@@ -1,0 +1,24 @@
+---------------------------------------------------
+Here are the ownership and the certification details
+of the Nivaran 1.0
+---------------------------------------------------
+
+app_name - 						Nivaran
+app_alias - 					nivaran
+app_author_name - 				My Company
+app_author_organizational - 	My Company
+app_author_organization - 		My Company
+app_author_locality - 			My Company
+app_author_state - 				Haryana
+app_author_country - 			India
+app_password - 					E3RMpHoZLe4e
+app_versionName - 				versionName "1.0"
+app_versionCode - 				100
+
+---------------------------------------------------
+The certification was created by WebIntoApp.com at
+the Wednesday 16th of April 2025 01:13:59 PM
+
+https://www.webintoapp.com
+---------------------------------------------------
+

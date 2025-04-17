@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "week_2",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

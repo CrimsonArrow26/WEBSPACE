@@ -1,0 +1,222 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+}
+.background-image,
+.background-image1 {
+  position: absolute;
+  width: 430px;
+  height: 700px;
+  object-fit: auto;
+  z-index: 0;
+}
+
+.background-image {
+  top: 10px;
+  left: 210px;
+  filter: blur(65px);
+  transform: rotate(-45deg);
+}
+
+.background-image1 {
+  top: 295px;
+  right: 195px;
+  filter: blur(105px);
+  transform: rotate(-35deg);
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(209, 209, 209, 0.089);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Signup form */
+.signup-form {
+  position: relative;
+  z-index: 4;
+  max-width: 340px;
+  width: 100%;
+  margin-top: 270px;
+  font-family: sans-serif;
+  color: rgb(26, 26, 158);
+  padding-right: 20px;
+}
+
+.signup-form label {
+  display: block;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #1a1a9e;
+}
+
+.signup-form input {
+  width: 100%;
+  height: 40px;
+  margin-top: 5px;
+  padding: 12px 16px;
+  border: 2px solid #1a1a9e;
+  border-radius: 18px;
+  background: #f6f6f6;
+  font-size: 16px;
+}
+
+.password-strength {
+  display: flex;
+  margin-top: 12px;
+  gap: 4px;
+}
+
+.bar {
+  flex: 1;
+  height: 6px;
+  margin-top: 30px;
+  border-radius: 4px;
+  background: #ccc;
+}
+
+.bar.filled {
+  background: #1a1a9e;
+}
+
+.note {
+  font-size: 12px;
+  color: #333;
+  margin-top: 18px;
+}
+
+.content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: black;
+  margin-top: 60px;
+}
+
+.buttons {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+button.primary,
+button.secondary {
+  width: 324px;
+  height: 48px;
+  border: none;
+  border-radius: 99px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+button.primary {
+  background-color: rgb(62, 60, 194);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+}
+
+button.secondary {
+  background-color: rgba(30, 16, 77, 0.8);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+}
+
+.content p {
+  padding: 20px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.129);
+}
+
+.modal-content {
+  background-color: rgba(147, 21, 21, 0.751);
+  color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  text-align: center;
+}
+
+#closeModal {
+  font-size: 28px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+#closeModal:hover,
+#closeModal:focus {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.notification-bar {
+  position: fixed;
+  top: -50px;
+  left: 0;
+  width: 100%;
+  background-color: #ff4d4d;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  z-index: 1000;
+  transition: top 0.5s ease-in-out;
+}
+
+.notification-bar.show {
+  top: 0;
+}
+
+@media (max-width: 768px) {
+  .signup-form {
+    margin-top: 150px;
+  }
+
+  .content {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-form {
+    margin-top: 100px;
+  }
+
+  .content {
+    margin-top: 10px;
+  }
+}
