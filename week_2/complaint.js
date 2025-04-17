@@ -9,16 +9,13 @@ toggle.addEventListener("change", () => {
 });
 
 document.getElementById("submitBtn").addEventListener("click", function () {
-  // Show toast first
   showToast();
 
-  // Store a flag in localStorage to trigger the toast on homepage
   localStorage.setItem("showToast", "true");
 
-  // Redirect to the homepage after showing the toast
   setTimeout(function () {
-    window.location.href = "homepage.html"; // Redirect after 3 seconds (when toast disappears)
-  }, 3000); // Adjust time to match the toast display duration
+    window.location.href = "homepage.html";
+  }, 3000);
 });
 
 function showToast() {
@@ -27,5 +24,66 @@ function showToast() {
 
   setTimeout(() => {
     toast.classList.remove("show");
-  }, 3000); // Toast will disappear after 3 seconds
+  }, 3000);
 }
+
+function triggerFileInput() {
+  const fileInput = document.getElementById("fileInput");
+  fileInput.click();
+}
+
+function handleFileSelect(event) {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      console.log("File uploaded:", file);
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+function capturePhoto() {
+  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices
+      .getUserMedia({ video: true })
+      .then(function (stream) {
+        const video = document.createElement("video");
+        video.srcObject = stream;
+        video.play();
+
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+
+        video.onplay = function () {
+          setTimeout(function () {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            const dataUrl = canvas.toDataURL("image/png");
+            console.log("Captured photo:", dataUrl);
+
+            const img = document.createElement("img");
+            img.src = dataUrl;
+            img.alt = "Captured Photo";
+            document.body.appendChild(img);
+
+            stream.getTracks().forEach((track) => track.stop());
+
+            video.remove();
+          }, 1000);
+        };
+      })
+      .catch(function (error) {
+        console.error("Error accessing the camera:", error);
+        alert(
+          "Unable to access the camera. Please check your device settings."
+        );
+      });
+  } else {
+    alert("Camera not supported on this device or browser.");
+  }
+}
+
+document.getElementById("cameraButton").addEventListener("click", capturePhoto);

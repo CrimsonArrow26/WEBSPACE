@@ -1,69 +1,51 @@
-import { getAuth, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
-import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+// import { auth, providerGoogle, providerFacebook } from "./firebase-init.js";
+// import { signInWithPopup } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+// import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 
-// Initialize Firebase Auth and Firestore
-const auth = getAuth();
-const db = getFirestore();
+// // Sign-in with Google
+// document.querySelector("#google-signup").addEventListener("click", () => {
+//   signInWithPopup(auth, providerGoogle)
+//     .then((result) => {
+//       const user = result.user;
+//       console.log("Google Login Success:", user);
+//       saveUserData(user);
+//     })
+//     .catch((err) => console.error("Error: ", err));
+// });
 
-// Google Sign-Up Handler
-const googleSignUpBtn = document.getElementById('google-signup'); // make sure this button exists in your HTML
-googleSignUpBtn.addEventListener('click', () => {
-  const provider = new GoogleAuthProvider();
-  signInWithPopup(auth, provider)
-    .then(result => {
-      const user = result.user;
-      console.log('Google Sign-Up Successful:', user);
-      // Save user to Firestore
-      setDoc(doc(db, "users", user.uid), {
-        name: user.displayName,
-        email: user.email,
-        photo: user.photoURL
-      }).then(() => {
-        // Redirect to home or another page after successful sign-up
-        window.location.href = "home.html"; // Example redirect
-      }).catch(err => {
-        console.error("Error saving user to Firestore:", err);
-      });
-    })
-    .catch(err => {
-      console.error('Google Sign-Up Error:', err);
-      alert('Error with Google Sign-Up');
-    });
-});
+// // Sign-in with Facebook
+// document.querySelector("#facebook-signup").addEventListener("click", () => {
+//   signInWithPopup(auth, providerFacebook)
+//     .then((result) => {
+//       const user = result.user;
+//       console.log("Facebook Login Success:", user);
+//       saveUserData(user);
+//     })
+//     .catch((err) => console.error("Error: ", err));
+// });
 
-// Facebook Sign-Up Handler
-const facebookSignUpBtn = document.getElementById('facebook-signup'); // make sure this button exists in your HTML
-facebookSignUpBtn.addEventListener('click', () => {
-  const provider = new FacebookAuthProvider();
-  signInWithPopup(auth, provider)
-    .then(result => {
-      const user = result.user;
-      console.log('Facebook Sign-Up Successful:', user);
-      // Save user to Firestore
-      setDoc(doc(db, "users", user.uid), {
-        name: user.displayName,
-        email: user.email,
-        photo: user.photoURL
-      }).then(() => {
-        // Redirect to home or another page after successful sign-up
-        window.location.href = "home.html"; // Example redirect
-      }).catch(err => {
-        console.error("Error saving user to Firestore:", err);
-      });
-    })
-    .catch(err => {
-      console.error('Facebook Sign-Up Error:', err);
-      alert('Error with Facebook Sign-Up');
-    });
-});
+// // Function to save user data to Firestore
+// function saveUserData(user) {
+//   const db = getFirestore();
+//   const userRef = doc(db, "users", user.uid);
+//   setDoc(userRef, {
+//     name: user.displayName,
+//     email: user.email,
+//     photo: user.photoURL,
+//   })
+//     .then(() => {
+//       console.log("User data saved to Firestore");
+//       window.location.href = "homepage.html"; // Redirect to homepage after successful sign-in
+//     })
+//     .catch((error) => {
+//       console.error("Error saving user data:", error);
+//     });
+// }
 
-// Handle Auth State Changes
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // Display welcome message and profile picture
-    document.getElementById("welcome").innerText = `Welcome, ${user.displayName}`;
-    document.getElementById("profile-pic").src = user.photoURL || 'default-profile-pic.png'; // Default if no photo
-  } else {
-    console.log('No user signed in');
-  }
-});
+// // Display the user's name and photo if already signed in
+// auth.onAuthStateChanged((user) => {
+//   if (user) {
+//     document.getElementById("welcome").innerText = "Welcome, " + user.displayName;
+//     document.getElementById("profile-pic").src = user.photoURL;
+//   }
+// });

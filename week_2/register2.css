@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 
-body, html {
+body,
+html {
   height: 100%;
 }
 
@@ -12,12 +13,11 @@ body, html {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;  /* Center content vertically */
-  align-items: center;      /* Center content horizontally */
+  justify-content: center;
+  align-items: center;
   height: 100%;
-  overflow: hidden;         /* Prevent scrolling */
+  overflow: hidden;
 }
-
 .background-image,
 .background-image1 {
   position: absolute;
@@ -56,7 +56,7 @@ body, html {
   z-index: 4;
   max-width: 340px;
   width: 100%;
-  margin-top: 270px; /* Initial position for larger screens */
+  margin-top: 270px;
   font-family: sans-serif;
   color: rgb(26, 26, 158);
   padding-right: 20px;
@@ -104,13 +104,12 @@ body, html {
   margin-top: 18px;
 }
 
-/* Content */
 .content {
   position: relative;
   z-index: 3;
   text-align: center;
   color: black;
-  margin-top: 60px;  /* Default margin */
+  margin-top: 60px;
 }
 
 .buttons {
@@ -121,7 +120,6 @@ body, html {
   gap: 0;
 }
 
-/* Button Styling */
 button.primary,
 button.secondary {
   width: 324px;
@@ -151,14 +149,14 @@ button.secondary {
 }
 
 .modal {
-  display: none; 
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.129); /* Black with transparency */
+  background-color: rgba(0, 0, 0, 0.129);
 }
 
 .modal-content {
@@ -167,7 +165,7 @@ button.secondary {
   margin: 15% auto;
   padding: 20px;
   border-radius: 10px;
-  width: 80%; /* Adjust width */
+  width: 80%;
   text-align: center;
 }
 
@@ -184,28 +182,41 @@ button.secondary {
   cursor: pointer;
 }
 
+.notification-bar {
+  position: fixed;
+  top: -50px;
+  left: 0;
+  width: 100%;
+  background-color: #ff4d4d;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  z-index: 1000;
+  transition: top 0.5s ease-in-out;
+}
 
+.notification-bar.show {
+  top: 0;
+}
 
-/* Media Queries */
-
-/* For smaller screens */
 @media (max-width: 768px) {
   .signup-form {
-    margin-top: 150px; /* Shift form upwards */
+    margin-top: 150px;
   }
 
   .content {
-    margin-top: 30px; /* Shift content upwards */
+    margin-top: 30px;
   }
 }
 
-/* For very small screens (mobile) */
 @media (max-width: 480px) {
   .signup-form {
-    margin-top: 100px; /* Move form higher */
+    margin-top: 100px;
   }
 
   .content {
-    margin-top: 10px;  /* Keep buttons closer to form */
+    margin-top: 10px;
   }
 }

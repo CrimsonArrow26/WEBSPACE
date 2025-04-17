@@ -1,4 +1,4 @@
-*{
+* {
   padding: 0;
   margin: 0;
   height: 100%;
@@ -13,10 +13,10 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Vertically center */
-  align-items: center;     /* Horizontally center */
+  justify-content: center;
+  align-items: center;
 }
-.background-image{
+.background-image {
   position: absolute;
   top: 10px;
   left: 210px;
@@ -28,7 +28,7 @@
   transform: rotate(-45deg);
 }
 
-.background-image1{
+.background-image1 {
   position: absolute;
   top: 295px;
   right: 195px;
@@ -40,8 +40,7 @@
   transform: rotate(-35deg);
 }
 
-
-.overlay{
+.overlay {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -58,7 +57,9 @@
   color: rgb(26, 26, 158);
   z-index: 4;
   position: relative;
-  padding: 200px 20px 0 20px; /* Push inputs downward */
+  padding: 200px 20px 0 20px;
+  height: 560px;
+  margin-top: -120px;
 }
 
 .login-form label[for="email"],
@@ -108,9 +109,9 @@
   cursor: pointer;
   margin-top: 8px;
   padding: 0;
-} 
+}
 
-.content{
+.content {
   position: relative;
   z-index: 3;
   text-align: center;
@@ -120,7 +121,7 @@
   justify-items: center;
 }
 
-.buttons{
+.buttons {
   margin-top: 35px;
   padding: 0;
   width: auto;
@@ -132,7 +133,8 @@
   gap: 0px;
 }
 
-.content button.primary, .content button.secondary{
+.content button.primary,
+.content button.secondary {
   margin: 0px 10px 0px 10px;
   width: 324px;
   height: 48px;
@@ -147,56 +149,77 @@
   z-index: 4;
 }
 
-.content p{
+
+.content p {
   display: flex;
   flex-direction: row;
   padding: 20px 0px;
+  padding-top: 30px;
 }
 
-.content button.primary{
+.content button.primary {
   background-color: rgb(62, 60, 194);
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
-.content button.secondary{
+.content button.secondary {
   background-color: rgba(54, 21, 163, 0.547);
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  margin-top: -90px
 }
 
-/* For smaller screens */
+
+.notification-bar {
+  position: fixed;
+  top: -50px; 
+  height: 50px;
+  left: 0;
+  width: 100%;
+  background-color: #ff4d4d; 
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  z-index: 1000;
+  transition: top 0.5s ease-in-out; 
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.notification-bar.show {
+  top: 0; 
+}
+
 @media (max-width: 768px) {
   .login-form {
-    margin-top: 300px; /* Shift form upwards */
+    margin-top: 0px;
   }
 
   .content {
-    margin-top: 30px; /* Shift content upwards */
+    margin-top: 30px;
   }
 }
 
-/* For very small screens (mobile) */
 @media (max-width: 480px) {
   .login-form {
-    margin-top: 180px; /* Move form higher */
+    margin-top: 120px;
+    height:560px;
   }
 
   .content {
-    margin-top: 10px;  /* Keep buttons closer to form */
+    margin-top: 10px;
   }
 
   .checkbox-container {
-    margin-left: 20px; /* Reduce horizontal spacing */
+    margin-left: 20px;
   }
 
   .login-form {
-    margin-left: 20px; /* Align better on small screens */
+    margin-left: 20px;
   }
 
   .content button.primary,
   .content button.secondary {
-    width: 280px; /* Slightly narrower buttons for small screens */
+    width: 280px;
   }
 }
-
-
-

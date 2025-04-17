@@ -1,22 +1,27 @@
-*{
+* {
   padding: 0;
   margin: 0;
-  height: 100%;
+  /* height: 100%; */
+}
+
+html,
+body {
+  height: auto;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .container {
   position: relative;
-  height: 100vh;
   width: 100%;
-  overflow: hidden;
+  min-height: 100vh; /* instead of fixed 100vh */
   display: flex;
   flex-direction: column;
-  justify-content: center; /* This will vertically center the content */
   align-items: center;
+  padding-bottom: 80px; /* adds breathing space at bottom */
 }
-
-.background-image{
-  position: absolute;
+.background-image {
+  position: fixed;
   top: 10px;
   left: 210px;
   width: 430px;
@@ -27,8 +32,8 @@
   transform: rotate(-45deg);
 }
 
-.background-image1{
-  position: absolute;
+.background-image1 {
+  position: fixed;
   top: 295px;
   right: 195px;
   width: 430px;
@@ -39,8 +44,7 @@
   transform: rotate(-35deg);
 }
 
-
-.overlay{
+.overlay {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -50,7 +54,14 @@
   z-index: 2;
 }
 
+.background-image,
+.background-image1 {
+  pointer-events: none;
+  user-select: none;
+}
+
 .content {
+  margin-top: 70px;
   position: relative;
   z-index: 3;
   text-align: center;
@@ -62,7 +73,7 @@
   align-items: center;
 }
 
-.buttons{
+.buttons {
   margin-top: 35px;
   padding: 0;
   width: auto;
@@ -74,9 +85,9 @@
   gap: 15px;
 }
 
-
-
-.content button.primary, .content button.secondary, .content button.tertiary{
+.content button.primary,
+.content button.secondary,
+.content button.tertiary {
   margin: 0px;
   width: 324px;
   height: 48px;
@@ -98,11 +109,11 @@
 }
 
 button.primary {
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px; /* spacing between icon and text */
+  gap: 10px;
   background-color: rgb(0, 0, 0) !important;
   border: none;
   border-radius: 99px;
@@ -113,11 +124,11 @@ button.primary {
 }
 
 button.secondary {
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px; /* spacing between icon and text */
+  gap: 10px;
   background-color: rgb(255, 255, 255) !important;
   border: none;
   border-radius: 99px;
@@ -128,11 +139,11 @@ button.secondary {
 }
 
 button.tertiary {
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px; /* spacing between icon and text */
+  gap: 10px;
   background-color: rgb(40, 99, 238);
   border: none;
   border-radius: 99px;
@@ -142,32 +153,32 @@ button.tertiary {
   cursor: pointer;
 }
 
-.content button.quaternary{
-  background: rgba( 255, 255, 255, 0.35 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 11px );
--webkit-backdrop-filter: blur( 7px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
-color: black;
-margin: 0px;
-padding: 10px;
-width: 324px;
-height: 48px;
-margin-top: 0;
-align-content: center;
-justify-content: center;
-/* background: #df5e4d; */
-border: none;
-border-radius: 99px;
-cursor: pointer;
-font-size: 1rem;
-z-index: 4;
+.content button.quaternary {
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(11px);
+  -webkit-backdrop-filter: blur(7px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: black;
+  margin: 0px;
+  padding: 10px;
+  width: 324px;
+  height: 48px;
+  margin-top: 0;
+  align-content: center;
+  justify-content: center;
+  /* background: #df5e4d; */
+  border: none;
+  border-radius: 99px;
+  cursor: pointer;
+  font-size: 1rem;
+  z-index: 4;
 }
 
-.content button{
+.content button {
   -webkit-tap-highlight-color: transparent;
-  -webkit-focus-ring-color: rgba(0,0,0,0);
+  -webkit-focus-ring-color: rgba(0, 0, 0, 0);
   outline: none;
 }
 
@@ -189,25 +200,19 @@ button.tertiary .icon {
   object-fit: contain;
 }
 
-.content p{
+.content p {
   display: flex;
   flex-direction: row;
   padding: 20px 0px;
 }
 
-
-
-
-
-
-.terms{
+.terms {
   width: 326px;
   height: 32px;
   font-size: 12px;
   margin-top: 70px;
 }
 
-/* Make sure elements don't exceed the screen on smaller devices */
 @media (max-width: 768px) {
   .background-image {
     width: 300px;
@@ -224,7 +229,7 @@ button.tertiary .icon {
   }
 
   .content {
-    margin-top: 550px;
+    margin-top: 500px;
     padding: 0 20px;
   }
 
@@ -241,10 +246,10 @@ button.tertiary .icon {
   }
 
   button:focus,
-button:active {
-  outline: none;
-  box-shadow: rgba(0, 0, 0, 0.301);
-}
+  button:active {
+    outline: none;
+    box-shadow: rgba(0, 0, 0, 0.301);
+  }
 
   .terms {
     width: 100%;
@@ -275,20 +280,18 @@ button:active {
 
   .content button {
     -webkit-tap-highlight-color: transparent;
-    -webkit-focus-ring-color: rgba(0,0,0,0);
+    -webkit-focus-ring-color: rgba(0, 0, 0, 0);
     outline: none;
   }
 
-.content button:focus,
-.content button:active {
-  outline: none;
-  box-shadow: none;
-}
-
+  .content button:focus,
+  .content button:active {
+    outline: none;
+    box-shadow: none;
+  }
 
   .terms {
     font-size: 11px;
     line-height: 1.4;
   }
 }
-

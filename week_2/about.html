@@ -7,9 +7,15 @@
     <link rel="stylesheet" href="about.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&family=Satisfy&family=Secular+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&family=Satisfy&family=Secular+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="/week_2/favicon.ico" />
+    <link rel="stylesheet" href="darkmode.css" />
+    <script src="darkmode.js" defer></script>
     <title>NIVARAN</title>
   </head>
   <body>
@@ -17,14 +23,16 @@
       <div class="hero">
         <h1>About Us</h1>
         <div class="video">
-          <iframe 
-          width="350" 
-          height="250" 
-          src="https://player.vimeo.com/video/1075449553?h=4e67cc846a&title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=0&background=0" 
-          title="NIVARAN" 
-          frameborder="0" 
-          allowfullscreen>
-        </iframe>
+          <video
+            type=".mp4"
+            autoplay
+            muted
+            loop
+            width="390px"
+            src="/week_2/resources/elements/nivaran (2).mp4"
+            title="NIVARAN"
+            allowfullscreen
+          ></video>
         </div>
         <div class="info">
           <p>
@@ -43,7 +51,7 @@
         </div>
       </div>
 
-      <div class="navbar">
+      <nav class="navbar">
         <div class="bottom-bar">
           <div class="nav-background">
             <svg
@@ -68,7 +76,7 @@
                   height="24"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="rgb(255, 255, 255, 0.4)"
+                  stroke="rgb(255, 255, 255)"
                   stroke-width="2"
                 >
                   <path
@@ -149,7 +157,7 @@
                   height="32"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="rgba(255, 255, 255, 1)"
+                  stroke="rgba(255, 255, 255, 0.4)"
                   stroke-width="2"
                 >
                   <circle cx="12" cy="12" r="10"></circle>
@@ -160,7 +168,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </nav>
     </div>
 
     <script src="about.js"></script>

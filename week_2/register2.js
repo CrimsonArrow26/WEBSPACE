@@ -1,67 +1,89 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const strengthBars = document.querySelectorAll('.bar'); // Get all the strength bars
-  const strengthText = document.getElementById('strength-text'); // Get the strength text element
-  const passwordInput = document.getElementById('password'); // Password input
-  const confirmPasswordInput = document.getElementById('confirm-password'); // Confirm password input
-  const signupForm = document.getElementById('signup-form'); // Form
-  const getStartedBtn = document.getElementById('getStartedBtn'); // Get Started button
+  const strengthBars = document.querySelectorAll(".bar");
+  const strengthText = document.getElementById("strength-text");
+  const passwordInput = document.getElementById("password");
+  const confirmPasswordInput = document.getElementById("confirm-password");
+  const signupForm = document.getElementById("signup-form");
+  const getStartedBtn = document.getElementById("getStartedBtn");
+  const notificationBar = document.getElementById("notification-bar");
 
-  // Function to update the strength bars based on the password input
   function updateStrength(password) {
     let strength = 0;
 
-    if (password.length >= 8) strength++;         // Length of 8 or more
-    if (/[A-Z]/.test(password)) strength++;       // Contains at least one uppercase letter
-    if (/\d/.test(password)) strength++;          // Contains at least one digit
-    if (/[\W_]/.test(password)) strength++;       // Contains at least one special character
+    if (password.length >= 8) strength++;
+    if (/[A-Z]/.test(password)) strength++;
+    if (/\d/.test(password)) strength++;
+    if (/[\W_]/.test(password)) strength++;
 
     strengthBars.forEach((bar, index) => {
-      bar.classList.toggle('filled', index < strength);
+      bar.classList.toggle("filled", index < strength);
     });
 
     if (strength === 0) {
-      strengthText.textContent = '';
+      strengthText.textContent = "";
     } else if (strength === 1) {
-      strengthText.textContent = 'Very Weak';
-      strengthText.style.color = 'red';
+      strengthText.textContent = "Very Weak";
+      strengthText.style.color = "red";
     } else if (strength === 2) {
-      strengthText.textContent = 'Weak';
-      strengthText.style.color = 'orange';
+      strengthText.textContent = "Weak";
+      strengthText.style.color = "orange";
     } else if (strength === 3) {
-      strengthText.textContent = 'Moderate';
-      strengthText.style.color = 'yellow';
+      strengthText.textContent = "Moderate";
+      strengthText.style.color = "yellow";
     } else if (strength === 4) {
-      strengthText.textContent = 'Strong';
-      strengthText.style.color = 'green';
+      strengthText.textContent = "Strong";
+      strengthText.style.color = "green";
     }
   }
 
-  // Event listener to update password strength
-  passwordInput.addEventListener('input', (e) => {
+  passwordInput.addEventListener("input", (e) => {
     updateStrength(e.target.value);
   });
 
-  // Function to show the modal when passwords don't match
   function showPasswordMismatchModal() {
-    document.getElementById('passwordMismatchModal').style.display = 'block';
+    document.getElementById("passwordMismatchModal").style.display = "block";
   }
 
-  // Close modal when clicking the close button
-  document.getElementById('closeModal').addEventListener('click', function () {
-    document.getElementById('passwordMismatchModal').style.display = 'none';
+  document.getElementById("closeModal").addEventListener("click", function () {
+    document.getElementById("passwordMismatchModal").style.display = "none";
   });
 
-  // Validate password match on form submit
-  getStartedBtn.addEventListener('click', function (e) {
-    e.preventDefault(); // Prevent form submission
+  function showNotification(message) {
+    notificationBar.textContent = message;
+    notificationBar.classList.add("show");
 
-    const password = passwordInput.value;
-    const confirmPassword = confirmPasswordInput.value;
+
+    setTimeout(() => {
+      notificationBar.classList.remove("show");
+    }, 3000);
+  }
+
+  getStartedBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const password = passwordInput.value.trim();
+    const confirmPassword = confirmPasswordInput.value.trim();
+
+   
+    if (!email || !password || !confirmPassword) {
+      showNotification("Please fill in all fields.");
+      return;
+    }
 
     if (password !== confirmPassword) {
-      showPasswordMismatchModal(); // Show modal if passwords don't match
-    } else {
-      signupForm.submit(); // Submit the form if passwords match
+      showNotification("Passwords do not match. Please try again.");
+      return;
     }
+
+   
+    localStorage.setItem("email", email.toLowerCase());
+    localStorage.setItem("password", password);
+
+    console.log("Saved Email:", localStorage.getItem("email"));
+    console.log("Saved Password:", localStorage.getItem("password"));
+
+ 
+    window.location.href = "login.html";
   });
 });
