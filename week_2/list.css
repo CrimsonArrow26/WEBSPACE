@@ -160,7 +160,6 @@ html {
 .nav-item svg,
 .add-button svg {
   -webkit-tap-highlight-color: transparent;
-  tap-highlight-color: transparent;
 }
 
 /* Navbar Styles */

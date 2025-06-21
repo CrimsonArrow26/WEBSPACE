@@ -1,82 +1,47 @@
-import { supabase } from './supabase-init.js';
+import { auth, signInWithEmailAndPassword } from "./firebaseConfig.js";
 
-// --- Reusable Modal Function ---
-function showModal(title, message, isSuccess = false) {
-    const modal = document.getElementById('notificationModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalMessage = document.getElementById('modalMessage');
+document.addEventListener("DOMContentLoaded", function () {
+  // const signInBtn = document.getElementById("signInBtn");
+  const notificationBar = document.getElementById("notification-bar");
 
-    modalTitle.textContent = title;
-    modalMessage.textContent = message;
-    
-    modalTitle.style.color = isSuccess ? 'green' : '#B81D1D';
-    
-    // Use 'block' to match the known-good CSS behavior
-    modal.style.display = 'block';
-}
+  function showNotification(message) {
+    notificationBar.textContent = message;
+    notificationBar.classList.add("show");
 
-// --- Form Submission Logic ---
-document.getElementById('login-form').addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    const { data, error } = await supabase.auth.signInWithPassword({
-        email: email,
-        password: password,
-    });
-
-    if (error) {
-        showModal('Login Failed', 'Invalid email or password. Please try again.');
-        console.error('Error signing in:', error.message);
-    } else {
-        // Successful login. The session is persisted by default.
-        showModal('Login successful!', 'Login successful! Redirecting to the homepage...', true);
-        setTimeout(() => {
-            window.location.href = 'homepage.html';
-        }, 2000);
-    }
+    setTimeout(() => {
+      notificationBar.classList.remove("show");
+    }, 3000);
+  }
 });
 
-// --- General Modal Closing Logic ---
-function setupModalClosers() {
-    const modal = document.getElementById('notificationModal');
-    // Ensure modal and button exist before adding listeners
-    if (modal) {
-        const closeButton = modal.querySelector('.close-button');
-        if (closeButton) {
-            closeButton.onclick = function () {
-                modal.style.display = 'none';
-            };
-        }
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        };
-    }
-}
+//   signInBtn.addEventListener("click", function (e) {
+//     e.preventDefault();
 
-document.addEventListener('DOMContentLoaded', () => {
-    setupModalClosers();
+//     const email = document.getElementById("email").value.trim();
+//     const password = document.getElementById("password").value.trim();
 
-    // --- Google Sign-In Logic ---
-    const googleSignInButton = document.getElementById('google-signin-btn');
-    if (googleSignInButton) {
-        googleSignInButton.addEventListener('click', async () => {
-            const { error } = await supabase.auth.signInWithOAuth({
-                provider: 'google',
-                options: {
-                    redirectTo: `${window.location.origin}/homepage.html`,
-                },
-            });
+//     if (!email || !password) {
+//       showNotification("Please enter both email and password.");
+//       return;
+//     }
 
-            if (error) {
-                showModal('Google Sign-In Failed', error.message);
-                console.error('Error with Google Sign-In:', error.message);
-            }
-            // On success, Supabase handles the redirect automatically.
-        });
-    }
-});
+//     const storedEmail = localStorage.getItem("email");
+//     const storedPassword = localStorage.getItem("password");
+
+//     console.log("Entered Email:", email);
+//     console.log("Entered Password:", password);
+//     console.log("Stored Email:", storedEmail);
+//     console.log("Stored Password:", storedPassword);
+
+//     if (!storedEmail || !storedPassword) {
+//       showNotification("You have not signed up yet. Please sign up first.");
+//       window.location.href = "register2.html";
+//       return;
+//     }
+
+//     if (email.toLowerCase() === storedEmail && password === storedPassword) {
+//       window.location.href = "homepage.html";
+//     } else {
+//       showNotification("Invalid email or password. Please try again.");
+//     }
+

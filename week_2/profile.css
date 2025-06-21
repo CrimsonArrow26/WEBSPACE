@@ -217,7 +217,7 @@ body.dark-mode input:checked + .slider {
 .nav-item svg,
 .add-button svg {
   -webkit-tap-highlight-color: transparent;
-  tap-highlight-color: transparent;
+
 }
 
 .navbar {
@@ -236,6 +236,7 @@ body.dark-mode input:checked + .slider {
   position: relative;
   width: 100%;
   height: 82px;
+  left: -0px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -341,133 +342,4 @@ body.dark-mode input:checked + .slider {
     width: 100%; /* Make it full width on small screens */
     padding: 0 10px; /* Add some padding */
   }
-}
-
-/* Name Input Modal */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 20;
-}
-
-.modal-overlay .modal-content {
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  text-align: center;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-.modal-overlay .modal-content h2 {
-  margin-bottom: 15px;
-}
-
-.modal-overlay .modal-content p {
-  margin-bottom: 20px;
-  color: #666;
-}
-
-.modal-overlay .modal-content input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.modal-overlay .modal-content button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #4a426a;
-  color: white;
-  cursor: pointer;
-}
-
-body.dark-mode .modal-overlay .modal-content button:active {
-  background-color: #a08aff;
-}
-
-/* Styles for avatar upload modal */
-.modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-    padding-top: 60px;
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.close-button {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close-button:hover,
-.close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.upload-options {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-.upload-option {
-    background-color: rgb(60, 110, 113);
-    color: white;
-    padding: 15px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
-    width: 45%;
-}
-
-.upload-option i {
-    font-size: 24px;
-}
-
-#profile-image {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 10px;
-  cursor: pointer;
 }

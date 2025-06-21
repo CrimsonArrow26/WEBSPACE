@@ -1,80 +1,89 @@
-import { supabase } from './supabase-init.js';
+document.addEventListener("DOMContentLoaded", function () {
+  const strengthBars = document.querySelectorAll(".bar");
+  const strengthText = document.getElementById("strength-text");
+  const passwordInput = document.getElementById("password");
+  const confirmPasswordInput = document.getElementById("confirm-password");
+  const signupForm = document.getElementById("signup-form");
+  const getStartedBtn = document.getElementById("getStartedBtn");
+  const notificationBar = document.getElementById("notification-bar");
 
-// --- Reusable Modal Function ---
-function showModal(title, message, isSuccess = false) {
-    const modal = document.getElementById('notificationModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalMessage = document.getElementById('modalMessage');
-    
-    modalTitle.textContent = title;
-    modalMessage.textContent = message;
+  function updateStrength(password) {
+    let strength = 0;
 
-    // Add a class for styling success messages differently if desired
-    modalTitle.style.color = isSuccess ? 'green' : '#B81D1D';
+    if (password.length >= 8) strength++;
+    if (/[A-Z]/.test(password)) strength++;
+    if (/\d/.test(password)) strength++;
+    if (/[\W_]/.test(password)) strength++;
 
-    modal.style.display = 'block';
-}
+    strengthBars.forEach((bar, index) => {
+      bar.classList.toggle("filled", index < strength);
+    });
 
-// --- Form Submission Logic ---
-document.getElementById('signup-form').addEventListener('submit', async (event) => {
-    event.preventDefault(); // Prevent the form from submitting the old way
+    if (strength === 0) {
+      strengthText.textContent = "";
+    } else if (strength === 1) {
+      strengthText.textContent = "Very Weak";
+      strengthText.style.color = "red";
+    } else if (strength === 2) {
+      strengthText.textContent = "Weak";
+      strengthText.style.color = "orange";
+    } else if (strength === 3) {
+      strengthText.textContent = "Moderate";
+      strengthText.style.color = "yellow";
+    } else if (strength === 4) {
+      strengthText.textContent = "Strong";
+      strengthText.style.color = "green";
+    }
+  }
 
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirm-password').value;
+  passwordInput.addEventListener("input", (e) => {
+    updateStrength(e.target.value);
+  });
+
+  function showPasswordMismatchModal() {
+    document.getElementById("passwordMismatchModal").style.display = "block";
+  }
+
+  document.getElementById("closeModal").addEventListener("click", function () {
+    document.getElementById("passwordMismatchModal").style.display = "none";
+  });
+
+  function showNotification(message) {
+    notificationBar.textContent = message;
+    notificationBar.classList.add("show");
+
+
+    setTimeout(() => {
+      notificationBar.classList.remove("show");
+    }, 3000);
+  }
+
+  getStartedBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const password = passwordInput.value.trim();
+    const confirmPassword = confirmPasswordInput.value.trim();
+
+   
+    if (!email || !password || !confirmPassword) {
+      showNotification("Please fill in all fields.");
+      return;
+    }
 
     if (password !== confirmPassword) {
-        // You can use the new modal for all messages
-        showModal('Error', 'Passwords do not match!');
-        return;
+      showNotification("Passwords do not match. Please try again.");
+      return;
     }
 
-    // --- Sign up user with Supabase ---
-    const { data, error } = await supabase.auth.signUp({
-        email: email,
-        password: password,
-    });
+   
+    localStorage.setItem("email", email.toLowerCase());
+    localStorage.setItem("password", password);
 
-    if (error) {
-        console.error('Error signing up:', error.message);
-        // Check for specific error message for existing user
-        if (error.message.includes('User already registered')) {
-            showModal('Registration Failed', 'This email is already registered. Please sign in.');
-        } else {
-            showModal('Registration Failed', `An error occurred: ${error.message}`);
-        }
-    } else {
-        showModal('Success!', 'Registration complete! You can now use the "Sign In" button to log in.', true);
-        // No automatic redirection as requested.
-    }
+    console.log("Saved Email:", localStorage.getItem("email"));
+    console.log("Saved Password:", localStorage.getItem("password"));
+
+ 
+    window.location.href = "login.html";
+  });
 });
-
-// --- General Modal Closing Logic ---
-function setupModalClosers() {
-    const modals = document.querySelectorAll('.modal');
-    modals.forEach(modal => {
-        // Find close buttons by class or ID for backwards compatibility
-        const closeButton = modal.querySelector('.close-button, #closeModal'); 
-        if (closeButton) {
-            closeButton.onclick = function () {
-                modal.style.display = 'none';
-            };
-        }
-    });
-
-    // Close modal if user clicks outside of the modal content
-    window.onclick = function (event) {
-        modals.forEach(modal => {
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        });
-    };
-}
-
-// Initialize the modal closing behavior when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    setupModalClosers();
-});
-
-// You can add password strength indicator logic here if needed.

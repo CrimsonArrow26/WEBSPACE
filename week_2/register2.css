@@ -151,82 +151,54 @@ button.secondary {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1000;
+  z-index: 1;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.6);
-  -webkit-animation-name: fadeIn;
-  -webkit-animation-duration: 0.4s;
-  animation-name: fadeIn;
-  animation-duration: 0.4s
+  background-color: rgba(0, 0, 0, 0.129);
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: rgba(147, 21, 21, 0.751);
+  color: white;
   margin: 15% auto;
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 400px;
   border-radius: 10px;
+  width: 80%;
   text-align: center;
-  position: relative;
-  font-family: 'Rethink Sans', sans-serif;
-  -webkit-animation-name: slideIn;
-  -webkit-animation-duration: 0.4s;
-  animation-name: slideIn;
-  animation-duration: 0.4s
 }
 
-.close-button {
-  color: #aaa;
-  position: absolute;
-  top: 10px;
-  right: 20px;
+#closeModal {
   font-size: 28px;
   font-weight: bold;
+  color: #ffffff;
 }
 
-.close-button:hover,
-.close-button:focus {
-  color: black;
+#closeModal:hover,
+#closeModal:focus {
+  color: rgb(255, 255, 255);
   text-decoration: none;
   cursor: pointer;
 }
 
-#modalTitle {
-  color: #333;
-  font-size: 1.5em;
-  margin-bottom: 10px;
+.notification-bar {
+  position: fixed;
+  top: -50px;
+  left: 0;
+  width: 100%;
+  background-color: #ff4d4d;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  z-index: 1000;
+  transition: top 0.5s ease-in-out;
 }
 
-#modalMessage {
-  color: #555;
-  font-size: 1.1em;
-}
-
-/* Add Animation */
-@-webkit-keyframes fadeIn {
-  from {opacity: 0} 
-  to {opacity: 1}
-}
-
-@keyframes fadeIn {
-  from {opacity: 0} 
-  to {opacity: 1}
-}
-
-@-webkit-keyframes slideIn {
-  from {top: -300px; opacity: 0} 
-  to {top: 0; opacity: 1}
-}
-
-@keyframes slideIn {
-  from {margin-top: -50px; opacity: 0}
-  to {margin-top: 15%; opacity: 1}
+.notification-bar.show {
+  top: 0;
 }
 
 @media (max-width: 768px) {

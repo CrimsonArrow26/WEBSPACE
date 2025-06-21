@@ -185,7 +185,7 @@ html {
 
 @media (max-width: 480px) {
   .bottom-bar {
-    width: 100%; /* Make it full width on small screens */
-    padding: 0 10px; /* Add some padding */
+    width: 100%; 
+    padding: 0 10px; 
   }
 }

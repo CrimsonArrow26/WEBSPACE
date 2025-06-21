@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="profile.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&family=Satisfy&family=Secular+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="darkmode.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&family=Satisfy&family=Secular+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="/week_2/favicon.ico" />
+    <link rel="stylesheet" href="darkmode.css" />
     <script src="darkmode.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <title>NIVARAN</title>
   </head>
@@ -24,15 +27,12 @@
         <div class="profile-info">
           <img id="profile-image" src="resources/elements/Avatar.png" />
           <h2><span id="username">Admin</span></h2>
-          <p id="email">admin@gmail.com</p>
-
-
-
+          <p>admin@gmail.com</p>
         </div>
         <div class="settings-section">
           <p class="section-title">General</p>
           <div class="settings-card">
-            <div class="setting-row" id="change-password-button" style="cursor: pointer;">
+            <div class="setting-row">
               <span class="icon">🔐</span>
               <span class="setting-text">Change Password</span>
               <span class="chevron">›</span>
@@ -42,7 +42,7 @@
               <span class="icon">☁️</span>
               <span class="setting-text">Dark Mode</span>
               <label class="switch">
-                <input type="checkbox" id="dark-mode-toggle"/>
+                <input type="checkbox" id="dark-mode-toggle" />
                 <span class="slider"></span>
               </label>
             </div>
@@ -64,31 +64,22 @@
               <span class="chevron">›</span>
             </div>
 
-            <div class="setting-row" id="report-problem-button">
+            <div class="setting-row">
               <span class="icon">☁️</span>
-              <span class="setting-text" onclick="window.location.href='complaint.html';" style="cursor: pointer;">Report Problem</span>
+              <span class="setting-text">Report Problem</span>
               <span class="chevron">›</span>
             </div>
           </div>
+        </div>
 
-          <div class="logout">
-            <span><button id="logout-button">Logout</button></span>
-          </div>
+        <div class="logout">
+          <span><button>Logout</button></span>
+        </div>
+      </div>
 
-          <!-- <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+      <!-- <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
       <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"></script>
       <script src="js/firebase-config.js"></script> -->
-        </div>
-      </div>
-
-      <div id="name-modal" class="modal-overlay" style="display: none;">
-        <div class="modal-content">
-            <h2>Welcome!</h2>
-            <p>Please enter your name to continue.</p>
-            <input type="text" id="name-input" placeholder="Your Name" />
-            <button id="save-name-button">Save</button>
-        </div>
-      </div>
 
       <nav class="navbar">
         <div class="bottom-bar">
@@ -210,27 +201,6 @@
       </nav>
     </div>
 
-    <div id="avatarUploadModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Update Profile Picture</h2>
-            <p>Choose an option to upload your new avatar.</p>
-            <div class="upload-options">
-                <button id="takeAvatarPhotoBtn" class="upload-option">
-                    <i class="fas fa-camera"></i>
-                    <span>Take a new Photo</span>
-                </button>
-                <input type="file" id="avatarCameraInput" accept="image/*" capture="environment" style="display: none;">
-    
-                <button id="selectAvatarFileBtn" class="upload-option">
-                    <i class="fas fa-image"></i>
-                    <span>Select from your files</span>
-                </button>
-                <input type="file" id="avatarFileInput" accept="image/*" style="display: none;">
-            </div>
-        </div>
-    </div>
-
-    <script type="module" src="profile.js"></script>
+    <script src="profile.js"></script>
   </body>
 </html>
