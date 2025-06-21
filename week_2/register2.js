@@ -1,89 +1,107 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const strengthBars = document.querySelectorAll(".bar");
-  const strengthText = document.getElementById("strength-text");
-  const passwordInput = document.getElementById("password");
-  const confirmPasswordInput = document.getElementById("confirm-password");
-  const signupForm = document.getElementById("signup-form");
-  const getStartedBtn = document.getElementById("getStartedBtn");
-  const notificationBar = document.getElementById("notification-bar");
+import { supabase } from './supabase-init.js';
 
-  function updateStrength(password) {
-    let strength = 0;
+document.addEventListener('DOMContentLoaded', () => {
+    const signupForm = document.getElementById('signup-form');
+    const passwordInput = document.getElementById('password');
+    const strengthText = document.getElementById('strength-text');
+    const bars = document.querySelectorAll('.password-strength .bar');
+    const modal = document.getElementById('notificationModal');
+    const closeModal = document.querySelector('.close-button');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMessage = document.getElementById('modalMessage');
 
-    if (password.length >= 8) strength++;
-    if (/[A-Z]/.test(password)) strength++;
-    if (/\d/.test(password)) strength++;
-    if (/[\W_]/.test(password)) strength++;
+    const showModal = (title, message) => {
+        modalTitle.textContent = title;
+        modalMessage.textContent = message;
+        modal.style.display = 'flex';
+    };
 
-    strengthBars.forEach((bar, index) => {
-      bar.classList.toggle("filled", index < strength);
+    if(closeModal) {
+        closeModal.onclick = () => {
+            modal.style.display = 'none';
+        };
+    }
+
+    window.onclick = (event) => {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    };
+
+    passwordInput.addEventListener('input', () => {
+        const password = passwordInput.value;
+        const strength = checkPasswordStrength(password);
+        updateStrengthIndicator(strength);
     });
 
-    if (strength === 0) {
-      strengthText.textContent = "";
-    } else if (strength === 1) {
-      strengthText.textContent = "Very Weak";
-      strengthText.style.color = "red";
-    } else if (strength === 2) {
-      strengthText.textContent = "Weak";
-      strengthText.style.color = "orange";
-    } else if (strength === 3) {
-      strengthText.textContent = "Moderate";
-      strengthText.style.color = "yellow";
-    } else if (strength === 4) {
-      strengthText.textContent = "Strong";
-      strengthText.style.color = "green";
-    }
-  }
+    signupForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const confirmPassword = document.getElementById('confirm-password').value.trim();
 
-  passwordInput.addEventListener("input", (e) => {
-    updateStrength(e.target.value);
-  });
+        if (password !== confirmPassword) {
+            showModal('Error', 'Passwords do not match.');
+            return;
+        }
 
-  function showPasswordMismatchModal() {
-    document.getElementById("passwordMismatchModal").style.display = "block";
-  }
+        const strength = checkPasswordStrength(password);
+        if (strength < 3) {
+            showModal('Error', 'Password is not strong enough.');
+            return;
+        }
 
-  document.getElementById("closeModal").addEventListener("click", function () {
-    document.getElementById("passwordMismatchModal").style.display = "none";
-  });
+        const { data, error } = await supabase.auth.signUp({
+            email: email,
+            password: password,
+        });
 
-  function showNotification(message) {
-    notificationBar.textContent = message;
-    notificationBar.classList.add("show");
+        if (error) {
+            // Show specific errors for password or email issues
+            if (error.message.toLowerCase().includes('password') || error.message.toLowerCase().includes('email')) {
+                showModal('Sign-Up Failed', error.message);
+            } else {
+                showModal('Check your email', 'If this email is not already registered, you will receive a verification link. Please check your inbox and spam folder.');
+            }
+        } else if (data.user) {
+            showModal('Success', 'Sign-up successful! Please check your email to verify your account.');
+            signupForm.reset();
+        }
+    });
 
-
-    setTimeout(() => {
-      notificationBar.classList.remove("show");
-    }, 3000);
-  }
-
-  getStartedBtn.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    const email = document.getElementById("email").value.trim();
-    const password = passwordInput.value.trim();
-    const confirmPassword = confirmPasswordInput.value.trim();
-
-   
-    if (!email || !password || !confirmPassword) {
-      showNotification("Please fill in all fields.");
-      return;
+    function checkPasswordStrength(password) {
+        let strength = 0;
+        if (password.length >= 8) strength++;
+        if (/[A-Z]/.test(password)) strength++;
+        if (/[0-9]/.test(password)) strength++;
+        if (/[^a-zA-Z0-9]/.test(password)) strength++;
+        return strength;
     }
 
-    if (password !== confirmPassword) {
-      showNotification("Passwords do not match. Please try again.");
-      return;
+    function updateStrengthIndicator(strength) {
+        bars.forEach((bar, index) => {
+            bar.style.backgroundColor = index < strength ? getStrengthColor(strength) : '#ddd';
+        });
+        strengthText.textContent = getStrengthText(strength);
     }
 
-   
-    localStorage.setItem("email", email.toLowerCase());
-    localStorage.setItem("password", password);
+    function getStrengthColor(strength) {
+        switch (strength) {
+            case 1: return 'red';
+            case 2: return 'orange';
+            case 3: return 'yellow';
+            case 4: return 'green';
+            default: return '#ddd';
+        }
+    }
 
-    console.log("Saved Email:", localStorage.getItem("email"));
-    console.log("Saved Password:", localStorage.getItem("password"));
-
- 
-    window.location.href = "login.html";
-  });
+    function getStrengthText(strength) {
+        switch (strength) {
+            case 1: return 'Weak';
+            case 2: return 'Medium';
+            case 3: return 'Strong';
+            case 4: return 'Very Strong';
+            default: return 'Use 8 or more characters with a mix of letters, numbers, and symbols.';
+        }
+    }
 });

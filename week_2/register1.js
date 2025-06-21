@@ -1,51 +1,51 @@
-// import { auth, providerGoogle, providerFacebook } from "./firebase-init.js";
-// import { signInWithPopup } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
-// import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+import { supabase } from './supabase-init.js';
 
-// // Sign-in with Google
-// document.querySelector("#google-signup").addEventListener("click", () => {
-//   signInWithPopup(auth, providerGoogle)
-//     .then((result) => {
-//       const user = result.user;
-//       console.log("Google Login Success:", user);
-//       saveUserData(user);
-//     })
-//     .catch((err) => console.error("Error: ", err));
-// });
+document.addEventListener('DOMContentLoaded', () => {
+    const googleSignUpBtn = document.getElementById('google-signup');
+    const modal = document.getElementById('notificationModal');
+    const closeModal = document.querySelector('.close-button');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMessage = document.getElementById('modalMessage');
 
-// // Sign-in with Facebook
-// document.querySelector("#facebook-signup").addEventListener("click", () => {
-//   signInWithPopup(auth, providerFacebook)
-//     .then((result) => {
-//       const user = result.user;
-//       console.log("Facebook Login Success:", user);
-//       saveUserData(user);
-//     })
-//     .catch((err) => console.error("Error: ", err));
-// });
+    const showModal = (title, message) => {
+        modalTitle.textContent = title;
+        modalMessage.textContent = message;
+        modal.style.display = 'flex';
+    };
 
-// // Function to save user data to Firestore
-// function saveUserData(user) {
-//   const db = getFirestore();
-//   const userRef = doc(db, "users", user.uid);
-//   setDoc(userRef, {
-//     name: user.displayName,
-//     email: user.email,
-//     photo: user.photoURL,
-//   })
-//     .then(() => {
-//       console.log("User data saved to Firestore");
-//       window.location.href = "homepage.html"; // Redirect to homepage after successful sign-in
-//     })
-//     .catch((error) => {
-//       console.error("Error saving user data:", error);
-//     });
-// }
+    closeModal.onclick = () => {
+        modal.style.display = 'none';
+    };
 
-// // Display the user's name and photo if already signed in
-// auth.onAuthStateChanged((user) => {
-//   if (user) {
-//     document.getElementById("welcome").innerText = "Welcome, " + user.displayName;
-//     document.getElementById("profile-pic").src = user.photoURL;
-//   }
-// });
+    window.onclick = (event) => {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    };
+
+    googleSignUpBtn.addEventListener('click', async () => {
+        const { error } = await supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+                redirectTo: window.location.href,
+            },
+        });
+
+        if (error) {
+            showModal('Google Sign-Up Failed', error.message);
+        }
+    });
+
+    // Handle the redirect from Google
+    supabase.auth.onAuthStateChange((event, session) => {
+        // The presence of a hash with an access_token indicates a return from OAuth
+        if (event === 'SIGNED_IN' && session && window.location.hash.includes('access_token')) {
+            showModal('Success', 'You have successfully signed up. Redirecting to the homepage...');
+            // To prevent the modal from re-appearing on reload, clear the hash.
+            window.history.replaceState(null, '', window.location.pathname);
+            setTimeout(() => {
+                window.location.href = 'homepage.html';
+            }, 2000); // 2-second delay to show the message
+        }
+    });
+});

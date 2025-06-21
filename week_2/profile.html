@@ -25,14 +25,17 @@
         <h1>Settings</h1>
 
         <div class="profile-info">
-          <img id="profile-image" src="resources/elements/Avatar.png" />
+          <label for="profile-image-upload">
+            <img id="profile-image" src="resources/elements/Avatar.png" alt="Profile Picture" />
+          </label>
+          <input type="file" id="profile-image-upload" accept="image/*" style="display: none;" />
           <h2><span id="username">Admin</span></h2>
-          <p>admin@gmail.com</p>
+          <p id="email">admin@gmail.com</p>
         </div>
         <div class="settings-section">
           <p class="section-title">General</p>
           <div class="settings-card">
-            <div class="setting-row">
+            <div id="change-password-row" class="setting-row">
               <span class="icon">🔐</span>
               <span class="setting-text">Change Password</span>
               <span class="chevron">›</span>
@@ -64,7 +67,7 @@
               <span class="chevron">›</span>
             </div>
 
-            <div class="setting-row">
+            <div id="report-problem-row" class="setting-row">
               <span class="icon">☁️</span>
               <span class="setting-text">Report Problem</span>
               <span class="chevron">›</span>
@@ -73,7 +76,7 @@
         </div>
 
         <div class="logout">
-          <span><button>Logout</button></span>
+          <span><button id="logout-button">Logout</button></span>
         </div>
       </div>
 
@@ -201,6 +204,6 @@
       </nav>
     </div>
 
-    <script src="profile.js"></script>
+    <script type="module" src="profile.js"></script>
   </body>
 </html>

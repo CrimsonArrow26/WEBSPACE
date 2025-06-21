@@ -26,6 +26,8 @@
     <title>Welcome Page</title>
   </head>
   <body>
+    <script type="module" src="redirect-if-auth.js"></script>
+    <div id="auth-loader" style="position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(255,255,255,0.85);display:flex;align-items:center;justify-content:center;font-family:sans-serif;font-size:1.5rem;">Checking authentication...</div>
     <div class="container">
       <img
         class="background-image"
@@ -42,7 +44,7 @@
       <div class="content">
         <p class="tagline">
           Make your organization complain free with<br /><strong
-            >“NIVARAN”</strong
+            >"NIVARAN"</strong
           >
         </p>
         <div class="buttons">

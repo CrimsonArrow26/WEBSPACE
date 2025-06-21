@@ -14,18 +14,12 @@
     <link rel="icon" type="image/x-icon" href="/week_2/favicon.ico" />
     <link rel="stylesheet" href="darkmode.css" />
     <script src="darkmode.js" defer></script>
-
- 
-    <script type="module" src="firebaseConfig.js"></script>
-    <script type="module" src="firebase-init.js"></script>
-    <script type="module" src="js/register1.js"></script>
-
-    <title>Register 1</title>
+    <title>Register</title>
   </head>
-
   <body>
+    <script type="module" src="redirect-if-auth.js"></script>
+    <div id="auth-loader" style="position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(255,255,255,0.85);display:flex;align-items:center;justify-content:center;font-family:sans-serif;font-size:1.5rem;">Checking authentication...</div>
     <div class="container">
-      <img class="background-image" src="resources/elements/Frame.png" />
       <img class="background-image" src="resources/elements/Frame.png" />
       <img class="background-image1" src="resources/elements/frame1.png" />
       <div class="overlay"></div>
@@ -49,12 +43,21 @@
           </a>
         </div>
         <div class="terms">
-          By registering, you agree to our Terms of Use. Learn how we collect,
-          use and share your data.
+          By registering, you agree to our Terms of Use.
         </div>
       </div>
     </div>
-    <h2 id="welcome"></h2>
-    <img id="profile-pic" style="width: 80px; border-radius: 50%" />
+    
+    <!-- Generic Notification Modal -->
+    <div id="notificationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalMessage"></p>
+        </div>
+    </div>
+
+    <script type="module" src="register1.js"></script>
   </body>
 </html>
+

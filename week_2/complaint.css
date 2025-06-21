@@ -68,6 +68,19 @@ body {
   color: rgba(191, 191, 191, 0.71);
 }
 
+.form-group input:disabled {
+  background: transparent;
+  color: inherit;
+  border: none;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.form-group input:disabled::placeholder {
+  color: #888;
+  opacity: 1;
+}
+
 .description-group {
   display: flex;
   align-items: flex-start;
@@ -181,24 +194,18 @@ input:checked + .slider:before {
 
 .submit-button {
   margin-top: 60px;
-  width: max-content;
+  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 90px;
   font-size: 24px;
 }
 
 .submit-button button {
-  display: flex;
-  padding: 24px 14px;
   width: 324px;
   height: 48px;
-  background-color: rgba(76, 74, 150, 0.877);
-  color: white;
-  border: 0px none;
-  font-size: 16px;
-  border-radius: 99px;
-  text-align: center;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -365,4 +372,99 @@ input:checked + .slider:before {
     width: 100%;
     padding: 0 10px;
   }
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background: rgba(0,0,0,0.4);
+  align-items: center;
+  justify-content: center;
+}
+.modal-content {
+  background: #f5f5f5;
+  margin: auto;
+  padding: 30px 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 350px;
+  text-align: center;
+  font-family: 'Rethink Sans', sans-serif;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+}
+.close-button {
+  position: absolute;
+  right: 18px;
+  top: 12px;
+  font-size: 1.5rem;
+  color: #888;
+  cursor: pointer;
+}
+.modal-btn {
+  display: block;
+  width: 100%;
+  margin: 18px 0 0 0;
+  padding: 12px;
+  background: #4c4a96;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: 'Rethink Sans', sans-serif;
+}
+.modal-btn:hover {
+  background: #36347a;
+}
+
+/* File count and list */
+.file-count {
+  margin-left: 10px;
+  color: #ffe082;
+  font-weight: 600;
+  font-size: 1rem;
+  background: #4c4a96;
+  border-radius: 12px;
+  padding: 4px 12px;
+  transition: background 0.2s;
+}
+.file-count:hover {
+  background: #36347a;
+}
+.file-list {
+  margin: 10px 0 0 0;
+  padding: 0;
+  list-style: none;
+  background: rgba(255,255,255,0.95);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  max-width: 320px;
+  max-height: 120px;
+  overflow-y: auto;
+  position: absolute;
+  z-index: 1000;
+}
+.file-list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  border-bottom: 1px solid #eee;
+}
+.file-list-item:last-child {
+  border-bottom: none;
+}
+.file-thumb {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }

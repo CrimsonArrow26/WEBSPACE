@@ -165,8 +165,10 @@ button.secondary {
   margin: 15% auto;
   padding: 20px;
   border-radius: 10px;
+  height: fit-content;
   width: 80%;
   text-align: center;
+  z-index: 1000;
 }
 
 #closeModal {
