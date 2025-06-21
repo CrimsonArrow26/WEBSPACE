@@ -1,42 +1,80 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const strengthBars = document.querySelectorAll('.bar'); // Get all the strength bars
-  const strengthText = document.getElementById('strength-text'); // Get the strength text element
+import { supabase } from './supabase-init.js';
 
-  
-  function updateStrength(password) {
-    let strength = 0;
-
+// --- Reusable Modal Function ---
+function showModal(title, message, isSuccess = false) {
+    const modal = document.getElementById('notificationModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMessage = document.getElementById('modalMessage');
     
-    if (password.length >= 8) strength++;         // Length of 8 or more
-    if (/[A-Z]/.test(password)) strength++;       // Contains at least one uppercase letter
-    if (/\d/.test(password)) strength++;          // Contains at least one digit
-    if (/[\W_]/.test(password)) strength++;       // Contains at least one special character
+    modalTitle.textContent = title;
+    modalMessage.textContent = message;
 
-    
-    strengthBars.forEach((bar, index) => {
-      bar.classList.toggle('filled', index < strength);
+    // Add a class for styling success messages differently if desired
+    modalTitle.style.color = isSuccess ? 'green' : '#B81D1D';
+
+    modal.style.display = 'block';
+}
+
+// --- Form Submission Logic ---
+document.getElementById('signup-form').addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevent the form from submitting the old way
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+
+    if (password !== confirmPassword) {
+        // You can use the new modal for all messages
+        showModal('Error', 'Passwords do not match!');
+        return;
+    }
+
+    // --- Sign up user with Supabase ---
+    const { data, error } = await supabase.auth.signUp({
+        email: email,
+        password: password,
     });
 
-   
-    if (strength === 0) {
-      strengthText.textContent = '';
-    } else if (strength === 1) {
-      strengthText.textContent = 'Very Weak';
-      strengthText.style.color = 'red';
-    } else if (strength === 2) {
-      strengthText.textContent = 'Weak';
-      strengthText.style.color = 'orange';
-    } else if (strength === 3) {
-      strengthText.textContent = 'Moderate';
-      strengthText.style.color = 'yellow';
-    } else if (strength === 4) {
-      strengthText.textContent = 'Strong';
-      strengthText.style.color = 'green';
+    if (error) {
+        console.error('Error signing up:', error.message);
+        // Check for specific error message for existing user
+        if (error.message.includes('User already registered')) {
+            showModal('Registration Failed', 'This email is already registered. Please sign in.');
+        } else {
+            showModal('Registration Failed', `An error occurred: ${error.message}`);
+        }
+    } else {
+        showModal('Success!', 'Registration complete! You can now use the "Sign In" button to log in.', true);
+        // No automatic redirection as requested.
     }
-  }
-
-  
-  document.querySelector('#password').addEventListener('input', (e) => {
-    updateStrength(e.target.value);
-  });
 });
+
+// --- General Modal Closing Logic ---
+function setupModalClosers() {
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach(modal => {
+        // Find close buttons by class or ID for backwards compatibility
+        const closeButton = modal.querySelector('.close-button, #closeModal'); 
+        if (closeButton) {
+            closeButton.onclick = function () {
+                modal.style.display = 'none';
+            };
+        }
+    });
+
+    // Close modal if user clicks outside of the modal content
+    window.onclick = function (event) {
+        modals.forEach(modal => {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+    };
+}
+
+// Initialize the modal closing behavior when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    setupModalClosers();
+});
+
+// You can add password strength indicator logic here if needed.

@@ -1,18 +1,22 @@
-*{
+* {
   padding: 0;
   margin: 0;
   height: 100%;
   box-sizing: border-box;
 }
 
-.container{
+.container {
   position: relative;
-  height: 100vh;
-  width: 100%;
-  overflow:hidden;
-}
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
 
-.background-image{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.background-image {
   position: absolute;
   top: 10px;
   left: 210px;
@@ -24,7 +28,7 @@
   transform: rotate(-45deg);
 }
 
-.background-image1{
+.background-image1 {
   position: absolute;
   top: 295px;
   right: 195px;
@@ -36,8 +40,7 @@
   transform: rotate(-35deg);
 }
 
-
-.overlay{
+.overlay {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -47,19 +50,18 @@
   z-index: 1;
   pointer-events: none;
 }
-.login-form{
-  max-width:340px;;
-  height: max-content;
-  margin: auto;
-  margin-top: 460px;
-  margin-left: 40px;
+.login-form {
+  max-width: 340px;
+  width: 100%;
   font-family: sans-serif;
   color: rgb(26, 26, 158);
   z-index: 4;
   position: relative;
+  padding: 200px 20px 0 20px;
 }
 
-.login-form label[for="email"], label[for="password"] {
+.login-form label[for="email"],
+.login-form label[for="password"] {
   display: block;
   height: 20px;
   margin-top: 20px;
@@ -67,7 +69,8 @@
   color: #1a1a9e;
 }
 
-.login-form input[type="email"], input[type="password"]{
+.login-form input[type="email"],
+.login-form input[type="password"] {
   height: 48px;
   width: 100%;
   padding: 12px 16px;
@@ -76,45 +79,47 @@
   border-radius: 18px;
   font-size: 16px;
   background: #f6f6f6;
-  text-align: left;
   box-sizing: border-box;
 }
 
-.checkbox-container{
+.checkbox-container {
   display: flex;
-  flex-direction: row;
-  height: 30px;
-  margin: 30px 0px 0px 40px;
+  height: 24px;
   align-items: center;
-  position: relative;
-  z-index: 4;
+  gap: 10px;
+  margin-top: 20px;
+  padding-left: 2px;
+  font-size: 14px;
+  color: #1a1a9e;
 }
 
-.checkbox-container input[type="checkbox"]{
+.checkbox-container input[type="checkbox"] {
   height: 24px;
   width: 24px;
-  border-radius: 10px;
   margin: 0;
+  border-radius: 10px;
   cursor: pointer;
 }
 
-.checkbox-container label{
-  padding-left: 15px;
-  padding-top: 5px;
+.checkbox-container label {
+  font-size: 14px;
+  color: #1a1a9e;
   cursor: pointer;
+  margin-top: 8px;
+  padding: 0;
 }
 
-.content{
+.content {
   position: relative;
   z-index: 3;
   text-align: center;
   color: black;
-  margin-top: 60px;
+  margin: 60px;
   height: max-content;
   justify-items: center;
 }
 
-.buttons{
+.buttons {
   margin-top: 35px;
   padding: 0;
   width: auto;
@@ -126,14 +131,14 @@
   gap: 0px;
 }
 
-.content button.primary, .content button.secondary{
+.content button.primary,
+.content button.secondary {
   margin: 0px 10px 0px 10px;
   width: 324px;
   height: 48px;
   margin-top: 0;
   align-content: center;
   justify-content: center;
-  background: #ff7966;
   border: none;
   border-radius: 99px;
   color: white;
@@ -142,19 +147,196 @@
   z-index: 4;
 }
 
-.content p{
+.content p {
   display: flex;
   flex-direction: row;
   padding: 20px 0px;
 }
 
-.content button.primary{
-  background-color: rgb(40, 99, 238);
+.content button.primary {
+  background-color: rgb(62, 60, 194);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
-.content button.secondary{
-  background-color: rgba(40, 99, 238, 60%);
+.content button.secondary {
+  background-color: rgba(54, 21, 163, 0.547);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 324px;
+    margin: 20px 0;
+    height: auto;
+}
 
+.divider .line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #ccc;
+}
 
+.divider .or {
+    padding: 0 10px;
+    color: #888;
+    height: auto;
+}
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 324px;
+  height: 48px;
+  margin: 0px 10px 0px 10px;
+  padding: 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 99px;
+  background-color: #ffffff;
+  color: #333;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.15s ease-in-out;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.google-btn:hover {
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+    transform: translateY(-1px);
+}
+
+.google-btn:active {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transform: translateY(1px);
+}
+
+.google-btn i {
+    font-size: 20px;
+    height: auto;
+    color: #000000; /* Black color for the icon */
+}
+
+.google-btn span {
+    height: auto;
+}
+
+@media (max-width: 768px) {
+  .login-form {
+    margin-top: 300px;
+  }
+
+  .content {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-form {
+    margin-top: 180px;
+  }
+
+  .content {
+    margin-top: 10px;
+  }
+
+  .checkbox-container {
+    margin-left: 20px;
+  }
+
+  .login-form {
+    margin-left: 20px;
+  }
+
+  .content button.primary,
+  .content button.secondary {
+    width: 280px;
+  }
+}
+
+/* --- Generic Modal Styles --- */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1000; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.6); 
+  -webkit-animation-name: fadeIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  height: fit-content;
+  width: 80%; 
+  max-width: 400px;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  font-family: 'Rethink Sans', sans-serif;
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s
+}
+
+.close-button {
+  color: #aaa;
+  position: absolute;
+  height: min-content;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#modalTitle {
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+#modalMessage {
+    color: #555;
+    font-size: 1.1em;
+}
+
+/* Add Animation */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@-webkit-keyframes slideIn {
+  from {margin-top: -50px; opacity: 0}
+  to {margin-top: 15%; opacity: 1}
+}
+
+@keyframes slideIn {
+  from {margin-top: -50px; opacity: 0}
+  to {margin-top: 15%; opacity: 1}
+} 

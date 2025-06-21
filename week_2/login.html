@@ -1,52 +1,70 @@
 <!DOCTYPE html>
-        <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <link rel="stylesheet" href="login.css">
-                
-                <title>Login</title>
-            </head>
-            <body>
-              <div class="container">
-                <img class="background-image" src="resources/elements/Frame.png"></img>
-                <img class="background-image" src="resources/elements/Frame.png"></img>
-                <img class="background-image1" src="resources/elements/Frame.png"></img>
-                <img class="background-image1" src="resources/elements/Frame.png"></img>
-                <div class="overlay"></div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="auth-guard.js"></script>
+    <link rel="stylesheet" href="login.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&family=Satisfy&family=Secular+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="darkmode.css" />
+    <script src="darkmode.js" defer></script>
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="container">
+      <img class="background-image" src="resources/elements/Frame.png" />
+      <img class="background-image" src="resources/elements/Frame.png" />
+      <img class="background-image1" src="resources/elements/Frame.png" />
+      <img class="background-image1" src="resources/elements/Frame.png" />
+      <div class="overlay"></div>
 
-                <form id="login-form" class="login-form">
-                  <label for="email">Login</label>
-                  <input type="email" id="email" placeholder="hrithivikpatil@gmail.com"/>
-                
-                  <label for="password">Password</label>
-                  <input type="password" id="password" placeholder="************"/>
-                </form>
+      <form id="login-form" class="login-form">
+        <label for="email">Login</label>
+        <input type="email" id="email" placeholder="hrithivikpatil@gmail.com" />
 
-                <div class="checkbox-container">
-                  <input type="checkbox" id="remember-me" />
-                  <label for="remember-me">Remember me</label>
-                </div>
-                 
-         
-                  <div class="content">
-                    <div class="buttons">
-                      <a href="homepage.html">
-                        <button class="primary">Sign In</button>
-                      </a>
-                      
-                      <p>If you don't have an account yet?</p>
-                      <a href="register2.html">
-                        <button class="secondary">Sign Up</button>
-                      </a>
-                      
-                    </div>
-                  </div>
-                  
-                  
-                </div>
-              </div>
-              <script src="login.js"></script>
-            </body>
-        </html>
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="************" />
+      </form>
+
+      <div class="content">
+        <div class="buttons">
+          <button class="primary" id="signInBtn" type="submit" form="login-form">Sign In</button>
+
+          <div class="divider">
+            <span class="line"></span>
+            <span class="or">OR</span>
+            <span class="line"></span>
+          </div>
+
+          <button class="google-btn" id="google-signin-btn">
+            <i class="fab fa-google"></i>
+            <span>Sign In with Google</span>
+          </button>
+
+          <p>If you don't have an account yet?</p>
+          <a href="register1.html">
+            <button class="secondary">Sign Up</button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Generic Notification Modal -->
+    <div id="notificationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalMessage"></p>
+        </div>
+    </div>
+
+    <script type="module" src="login.js"></script>
+  </body>
+</html>
