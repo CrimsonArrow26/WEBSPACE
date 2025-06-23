@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Polaroider Gallery</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:500,700,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="src/app/icon.svg" />
+  <meta property="og:title" content="Polaroider" />
+  <meta property="og:description" content="Bring the past to your present with instant polaroid-style photos. Create, develop, and save your memories in a classic style!" />
+  <meta property="og:image" content="public/og-image.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-website-url.com/gallery.html" />
+  <meta property="og:site_name" content="Polaroider" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Polaroider" />
+  <meta name="twitter:description" content="Bring the past to your present with instant polaroid-style photos. Create, develop, and save your memories in a classic style!" />
+  <meta name="twitter:image" content="public/og-image.png" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-content">
+      <a href="index.html" class="navbar-title" style="text-decoration:none;color:inherit;">Polaroider</a>
+      <a href="index.html" class="navbar-link">Home</a>
+    </div>
+  </nav>
+  <main class="main-container">
+    <div class="content-wrapper">
+      <h1 class="main-title">Gallery</h1>
+      <button id="select-toggle" class="select-toggle-btn">Select</button>
+      <div id="gallery-grid" class="gallery-grid"></div>
+      <div id="gallery-empty" class="gallery-empty-message" style="display:none;"></div>
+    </div>
+    <button id="download-selected" class="download-selected-btn" style="display:none;">Download</button>
+    <div id="polaroid-modal" class="polaroid-modal" style="display:none;">
+      <div class="polaroid-modal-backdrop"></div>
+      <div class="polaroid-modal-content">
+        <div class='modal-polaroid-frame'><img id="modal-img" src="" alt="Polaroid" /></div>
+        <button id="modal-close" class="modal-close-btn">&times;</button>
+      </div>
+    </div>
+  </main>
+  <script>
+    function loadGallery() {
+      const gallery = JSON.parse(localStorage.getItem('polaroidGallery') || '[]');
+      const grid = document.getElementById('gallery-grid');
+      const emptyMsg = document.getElementById('gallery-empty');
+      if (gallery.length === 0) {
+        grid.innerHTML = '';
+        emptyMsg.textContent = 'No polaroids yet. Go make some!';
+        emptyMsg.style.display = 'block';
+        return;
+      }
+      emptyMsg.style.display = 'none';
+      grid.innerHTML = '';
+      gallery.slice().reverse().forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.className = 'gallery-polaroid';
+        div.dataset.idx = idx;
+        div.innerHTML = `<div class='gallery-polaroid-img'><img src="${item.dataUrl}" alt="Polaroid" /><div class='gallery-polaroid-label'></div></div>`;
+        grid.appendChild(div);
+      });
+    }
+    loadGallery();
+
+    // --- Select Mode Logic ---
+    let selectMode = false;
+    let selected = new Set();
+    const selectToggle = document.getElementById('select-toggle');
+    const downloadBtn = document.getElementById('download-selected');
+    selectToggle.addEventListener('click', () => {
+      selectMode = !selectMode;
+      selectToggle.classList.toggle('active', selectMode);
+      updateSelectMode();
+    });
+    function updateSelectMode() {
+      const polaroids = document.querySelectorAll('.gallery-polaroid');
+      polaroids.forEach((div, idx) => {
+        let checkbox = div.querySelector('.gallery-polaroid-checkbox');
+        if (selectMode) {
+          if (!checkbox) {
+            checkbox = document.createElement('label');
+            checkbox.className = 'gallery-polaroid-checkbox';
+            checkbox.innerHTML = `<input type='checkbox' data-idx='${idx}' />`;
+            div.querySelector('.gallery-polaroid-img').appendChild(checkbox);
+          }
+          checkbox.style.display = 'flex';
+          checkbox.querySelector('input').checked = selected.has(idx);
+        } else if (checkbox) {
+          checkbox.style.display = 'none';
+        }
+        div.classList.toggle('selected', selected.has(idx));
+      });
+      downloadBtn.style.display = selectMode && selected.size > 0 ? 'block' : 'none';
+    }
+    document.getElementById('gallery-grid').addEventListener('click', (e) => {
+      const polaroid = e.target.closest('.gallery-polaroid');
+      if (!polaroid) return;
+      const idx = Number(polaroid.dataset.idx);
+      if (selectMode) {
+        if (selected.has(idx)) selected.delete(idx);
+        else selected.add(idx);
+        updateSelectMode();
+        return;
+      }
+      // Modal/zoom logic
+      const gallery = JSON.parse(localStorage.getItem('polaroidGallery') || '[]');
+      const item = gallery[gallery.length - 1 - idx];
+      if (!item) return;
+      const modal = document.getElementById('polaroid-modal');
+      document.getElementById('modal-img').src = item.dataUrl;
+      modal.style.display = 'flex';
+    });
+    document.getElementById('modal-close').onclick = closeModal;
+    document.querySelector('.polaroid-modal-backdrop').onclick = closeModal;
+    function closeModal() {
+      document.getElementById('polaroid-modal').style.display = 'none';
+      document.getElementById('modal-img').src = '';
+    }
+    // --- Download Selected Logic ---
+    function createPolaroidWithFrame(imageUrl) {
+      return new Promise((resolve) => {
+        const frameWidth = 200;
+        const frameHeight = 240;
+        const imageSize = 176;
+        const frameRadius = 10;
+        const imageTop = 12;
+        const imageLeft = 12;
+        const canvas = document.createElement('canvas');
+        canvas.width = frameWidth;
+        canvas.height = frameHeight;
+        const ctx = canvas.getContext('2d');
+        // Draw white polaroid frame with rounded corners
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(frameRadius, 0);
+        ctx.lineTo(frameWidth - frameRadius, 0);
+        ctx.quadraticCurveTo(frameWidth, 0, frameWidth, frameRadius);
+        ctx.lineTo(frameWidth, frameHeight - frameRadius);
+        ctx.quadraticCurveTo(frameWidth, frameHeight, frameWidth - frameRadius, frameHeight);
+        ctx.lineTo(frameRadius, frameHeight);
+        ctx.quadraticCurveTo(0, frameHeight, 0, frameHeight - frameRadius);
+        ctx.lineTo(0, frameRadius);
+        ctx.quadraticCurveTo(0, 0, frameRadius, 0);
+        ctx.closePath();
+        ctx.fillStyle = '#fff';
+        ctx.shadowColor = 'rgba(0,0,0,0.13)';
+        ctx.shadowBlur = 12;
+        ctx.fill();
+        ctx.restore();
+        // Draw the image inside the frame
+        const img = new window.Image();
+        img.onload = function () {
+          ctx.save();
+          ctx.beginPath();
+          ctx.rect(imageLeft, imageTop, imageSize, imageSize);
+          ctx.closePath();
+          ctx.clip();
+          ctx.drawImage(img, imageLeft, imageTop, imageSize, imageSize);
+          ctx.restore();
+          resolve(canvas.toDataURL('image/png', 2.0));
+        };
+        img.src = imageUrl;
+      });
+    }
+    downloadBtn.addEventListener('click', async () => {
+      const gallery = JSON.parse(localStorage.getItem('polaroidGallery') || '[]');
+      const items = Array.from(selected).map(idx => gallery[gallery.length - 1 - idx]);
+      if (items.length === 1) {
+        const dataUrl = await createPolaroidWithFrame(items[0].dataUrl);
+        const a = document.createElement('a');
+        a.href = dataUrl;
+        a.download = 'polaroid.png';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      } else if (items.length > 1) {
+        // Use JSZip for zipping
+        const zip = new JSZip();
+        for (let i = 0; i < items.length; i++) {
+          const dataUrl = await createPolaroidWithFrame(items[i].dataUrl);
+          zip.file(`polaroid-${i + 1}.png`, dataUrl.split(',')[1], {base64: true});
+        }
+        const blob = await zip.generateAsync({type: 'blob'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'polaroids.zip';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 2000);
+      }
+    });
+    // Load JSZip dynamically if needed
+    if (typeof JSZip === 'undefined') {
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+      document.body.appendChild(script);
+    }
+    document.getElementById('gallery-grid').addEventListener('change', (e) => {
+      if (e.target.matches('.gallery-polaroid-checkbox input')) {
+        const idx = Number(e.target.dataset.idx);
+        if (e.target.checked) selected.add(idx);
+        else selected.delete(idx);
+        updateSelectMode();
+      }
+    });
+  </script>
+</body>
+</html> 

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Polaroider</title>
+  <meta name="description" content="A simple app to create Polaroid photos." />
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:500,700,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- Cropper.js CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="src/app/icon.svg" />
+  <meta property="og:title" content="Polaroider" />
+  <meta property="og:description" content="Bring the past to your present with instant polaroid-style photos. Create, develop, and save your memories in a classic style!" />
+  <meta property="og:image" content="public/og-image.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-website-url.com/" />
+  <meta property="og:site_name" content="Polaroider" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Polaroider" />
+  <meta name="twitter:description" content="Bring the past to your present with instant polaroid-style photos. Create, develop, and save your memories in a classic style!" />
+  <meta name="twitter:image" content="public/og-image.png" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-content">
+      <a href="index.html" class="navbar-title" style="text-decoration:none;color:inherit;">Polaroider</a>
+      <a href="gallery.html" class="navbar-link">Gallery</a>
+    </div>
+  </nav>
+  <main class="main-container">
+    <div class="content-wrapper">
+      <h1 class="main-title">Polaroider</h1>
+      <p class="tagline">Bring the <span class="fade-past">past</span><br> to your <span class="fade-present">present</span></p>
+      <!-- Camera Switcher -->
+      <div class="camera-switcher">
+        <button id="camera-prev" class="camera-arrow" aria-label="Previous camera">&#8592;</button>
+        <div id="camera-area" class="camera-area"></div>
+        <button id="camera-next" class="camera-arrow" aria-label="Next camera">&#8594;</button>
+        <div class="animated-polaroid">
+          <div class="polaroid-frame">
+            <div class="polaroid-image-wrapper">
+              <canvas id="polaroid-canvas" class="polaroid-image"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Upload Form -->
+      <form id="upload-form" class="upload-form">
+        <label for="image" class="upload-label">
+          <span class="upload-icon">📷</span>
+          Upload an image
+        </label>
+        <input id="image" name="image" type="file" accept="image/png, image/jpg, image/jpeg" class="upload-input" />
+      </form>
+      <!-- Crop Dialog -->
+      <div id="crop-dialog" class="dialog-overlay hidden">
+        <div class="dialog-content">
+          <div class="dialog-info">
+            <h2 class="dialog-title">Adjust the image</h2>
+            <p class="dialog-desc">Adjust the image so it is centered and the desired size.</p>
+            <div class="dialog-actions">
+              <button id="crop-confirm" class="btn btn-primary" type="button">Continue</button>
+              <button id="crop-cancel" class="btn btn-secondary" type="button">Close</button>
+            </div>
+          </div>
+          <div class="dialog-image-area">
+            <img id="image-to-crop" alt="Image to crop" class="image-to-crop" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- Cropper.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+  <script src="main.js"></script>
+  <a id="download-link" style="display:none"></a>
+</body>
+</html> 

@@ -1,0 +1,29 @@
+{
+	"name": "polaroider",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@radix-ui/react-dialog": "^1.1.14",
+		"cropperjs": "^1.6.2",
+		"lucide-react": "^0.289.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@tailwindcss/postcss": "^4.1.8",
+		"@types/node": "^20.19.0",
+		"@types/react": "^18.3.23",
+		"@types/react-dom": "^18.3.7",
+		"next": "14.2.29",
+		"postcss": "^8.5.4",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"tailwindcss": "^4.1.8",
+		"typescript": "^5.8.3"
+	}
+}
