@@ -783,17 +783,19 @@ function init() {
     // Update texts
     updateTexts();
     
-    // Check for saved location
-    const savedLocation = localStorage.getItem('lastKnownLocation');
-    if (savedLocation) {
-        try {
-            currentLocation = JSON.parse(savedLocation);
-            showScreen('categories');
-            loadContacts();
-        } catch (e) {
-            console.error('Failed to parse saved location');
-        }
-    }
+    // Always start on location screen
+    showScreen('location');
+    // Remove auto-navigation to categories if location exists
+    // const savedLocation = localStorage.getItem('lastKnownLocation');
+    // if (savedLocation) {
+    //     try {
+    //         currentLocation = JSON.parse(savedLocation);
+    //         showScreen('categories');
+    //         loadContacts();
+    //     } catch (e) {
+    //         console.error('Failed to parse saved location');
+    //     }
+    // }
     
     // Render categories
     renderCategories();
